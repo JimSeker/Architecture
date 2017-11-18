@@ -1,5 +1,5 @@
-# Architecture
 google android Architecture examples
+===========
 
 <b>viewModelDemo</b> is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
 
@@ -9,10 +9,5 @@ google android Architecture examples
 
 <b>LiveDataRoomDemo</b> shows how to use the liveData object with the database to have the display updated when new data is added.
 
-
-
-reminder
-https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e 
-https://developer.android.com/topic/libraries/architecture/index.html
-https://medium.com/@taman.neupane/basic-example-of-livedata-and-viewmodel-14d5af922d0
-https://medium.com/google-developers/lifecycle-aware-data-loading-with-android-architecture-components-f95484159de4
+These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
+All examples are for Android.
