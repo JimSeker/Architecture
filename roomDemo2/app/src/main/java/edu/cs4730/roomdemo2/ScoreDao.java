@@ -1,4 +1,5 @@
 package edu.cs4730.roomdemo2;
+
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
@@ -18,8 +19,7 @@ public interface ScoreDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<Score> scores);
 
-    @Query("select * from score where id = :scoreId")
-    List<Score> loadScore(int scoreId);
-
+    @Query("select * from score where score = :scoreValue")
+    List<Score> loadScore(int scoreValue);
 
 }
