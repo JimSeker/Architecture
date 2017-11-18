@@ -1,6 +1,7 @@
-package edu.cs4730.roomdemo;
+package edu.cs4730.livedataroomdemo;
 
-import android.arch.persistence.room.Room;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,8 +14,11 @@ import java.util.List;
 /*
  * This is a simple example of how the room architecture to create a simple database.
  * It create a score Score  Plain Old Java Object (entity), a data access object (dao), and roomDatabase.
+ *  It then uses the liveData objects to get the data, instead of having to use threads to retrieve the data.
+ *  When data is changed or add the liveData is notified and will display the data via the observer, so
+ *  there is no "display button", since it's not needed.
  *
- * In MainActivity it opens the database, then in threads data can be added and displayed.
+ * In MainActivity it opens the database
  *
  */
 
@@ -30,44 +34,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         logger = (TextView) findViewById(R.id.logger);
 
-        //open(create) the database.
-        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-name").build();
+        AppDatabase ad = AppDatabase.getInstance(this);
 
-
-        findViewById(R.id.btn_display).setOnClickListener(new View.OnClickListener() {
+        ScoreListViewModel scoreListViewModel = new ScoreListViewModel(ad);
+        scoreListViewModel.getScores().observe(this, new Observer<List<Score>>() {
             @Override
-            public void onClick(View v) {
-                Thread myThread = new Thread() {
-                    public void run() {
-                        logthis("Starting display of score=3012");
-                        List<Score> scores = db.ScoreDao().loadScore(3012);
-                        if (scores != null) {
-                            for (Score score : scores) {
-                                String data = "id=" + score.getId() + " name=" + score.getName() + " score=" + score.getScore();
-                                logthis(data);
-                            }
-                        } else {
-                            logthis("no data loadScore ");
-
-                        }
-
-                        scores = db.ScoreDao().loadAllScores();//myDR.getScores().getValue();
-                        logthis("Starting display of all data");
-                        if (scores != null) {
-                            for (Score score : scores) {
-                                String data = "id=" + score.getId() + " name=" + score.getName() + " score=" + score.getScore();
-                                logthis(data);
-                            }
-                        } else {
-                            logthis("There is no data!!!");
-                        }
-
+            public void onChanged(@Nullable List<Score> scores) {
+                logthis("Data has been added/changed, displaying");
+                if (scores != null) {
+                    for (Score score : scores) {
+                        String data = "id=" + score.getId() + " name=" + score.getName() + " score=" + score.getScore();
+                        logthis( data);
                     }
-                };
-                myThread.start();
+                } else {
+                    logthis( "There is no data!!!");
+                }
             }
         });
+
 
         findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,13 +59,14 @@ public class MainActivity extends AppCompatActivity {
                 Thread myThread = new Thread() {
                     public void run() {
                         logthis("Inserting data");
-                        db.ScoreDao().insertAll(generateScores());
+                        ad.ScoreDao().insertAll(generateScores());
                     }
                 };
                 myThread.start();
             }
         });
     }
+
 
 
     //this just generates some simple data to be inserted into the database.

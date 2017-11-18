@@ -1,18 +1,18 @@
-package edu.cs4730.roomdemo;
+package edu.cs4730.livedataroomdemo;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
+ * S/**
  * Score  Plain Old Java Object  This needs to provide getters and setters for everything plus the
- * constructors for the object.   The table in the database is not specified, so it will be score (the Class name)
+ * constructors for the object.   The table in the database is specified as scores
  */
 
-@Entity
-public class Score {
-    public @PrimaryKey
-    int id;
 
+@Entity(tableName = "scores")
+public class Score {
+    public @PrimaryKey int id;
     public String name;
     public int score;
 
