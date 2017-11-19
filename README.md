@@ -9,6 +9,8 @@ google android Architecture examples
 
 <b>LiveDataRoomDemo</b> shows how to use the liveData object with the database to have the display updated when new data is added.
 
+<b>ContentProviderRoomDemo</b> shows how to create a contentprovider around a room database.  It's based on sqliteDemo in the https://github.com/JimSeker/saveData 
+
 These may also be helpful links 
 https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e
 https://developer.android.com/topic/libraries/architecture/index.html 
