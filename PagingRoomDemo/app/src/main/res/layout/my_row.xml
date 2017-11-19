@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#B6B6B6"
+        android:orientation="vertical"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:paddingTop="2sp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="name:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="score:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:typeface="sans"/>
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="score "
+
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
