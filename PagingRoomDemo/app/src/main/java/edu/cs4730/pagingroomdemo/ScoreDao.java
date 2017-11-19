@@ -13,6 +13,8 @@ import java.util.List;
 /**
  * This is the Dao for the score "db"  It provides the accessor methods to the database.
  *
+ * In this version, queries have a return version of  LivePagedListProvider so they can be
+ * used with the recyclerview and livepageadapter.
  */
 @Dao
 public interface ScoreDao {

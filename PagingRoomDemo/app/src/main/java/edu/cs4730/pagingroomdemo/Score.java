@@ -8,7 +8,8 @@ import android.provider.BaseColumns;
 
 /**
  * Score  Plain Old Java Object  This needs to provide getters and setters for everything plus the
- * constructors for the object.   The table in the database is not specified, so it will be score (the Class name)
+ * constructors for the object.   if tablename for  the database is not specified, so it will be score (the Class name)
+ *
  */
 
 @Entity(tableName = Score.TABLE_NAME)

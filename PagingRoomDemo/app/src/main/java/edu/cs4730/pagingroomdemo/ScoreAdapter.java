@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * hope this works.
+ * This is adapter, extended from the new PagedListAdapter, so it loads much slower
+ * and works directly with a room database.
+ *
+ * most of the adapter is the same as "standard" recyclerView adapter.
  */
 
 public class ScoreAdapter extends PagedListAdapter<Score, ScoreAdapter.ViewHolder> {
@@ -39,6 +42,9 @@ public class ScoreAdapter extends PagedListAdapter<Score, ScoreAdapter.ViewHolde
             holder.myScore.setText("");
         }
     }
+
+    //this is new to the adapter and needs to be setup so view knows if loading new data or
+    //the same data.
     private static final DiffCallback<Score> DIFF_CALLBACK = new DiffCallback<Score>() {
         @Override
         public boolean areItemsTheSame(@NonNull Score oldUser, @NonNull Score newUser) {
