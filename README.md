@@ -13,6 +13,13 @@ google android Architecture examples
 
 <b>PagingRoomDemo</b> is an example using the page library to slowly load the data froma room database into a recyclerview, using PageList, PagedListAdaepter, and LivePagedListProvider (in the RoomDatabase).
 
+notes for next example, livedata with reactiveStreams<BR>
+    implementation "android.arch.lifecycle:reactivestreams<BR>
+	https://medium.com/@iammert/offline-app-with-rxjava-2-and-room-ccd0b5c18101  good example, uses older library.<BR>
+	https://developer.android.com/reference/android/arch/lifecycle/LiveDataReactiveStreams.html<BR>
+	https://android.jlelse.eu/android-reactive-architecture-part-1-introduction-60466bc88774  (kotlin, not java!)<BR>
+	https://developer.android.com/topic/libraries/architecture/guide.html  (able halfway down the page), doesn't work ,but some explainations. <BR>
+	https://github.com/googlesamples/android-architecture-components/tree/master/BasicRxJavaSample  is google's example for it, poorely documented and almost no comments.<BR>
 
 These may also be helpful links 
 https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e
