@@ -78,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Score> scores = new ArrayList<Score>();
         for (int i = 0; i < FIRST.length; i++) {
-            Score score = new Score(i, FIRST[i], SECOND[i]);
-            //score.setId(i);
+            Score score = new Score(FIRST[i], SECOND[i]);
             //score.setName(FIRST[i]);
             //score.setScore(SECOND[i]);
             scores.add(score);

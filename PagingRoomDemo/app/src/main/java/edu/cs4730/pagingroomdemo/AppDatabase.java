@@ -29,11 +29,19 @@ public abstract class AppDatabase extends RoomDatabase {
             sInstance = Room
                     .databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name")
                     .build();
-            sInstance.populateInitialData();
+
         }
         return sInstance;
     }
 
+    /**
+     * simple method to add the data into system.
+     */
+    public static void AddData() {
+        if (sInstance != null) {
+            sInstance.populateInitialData();  //only addes if there is no data.
+        }
+    }
     /**
      * Inserts the dummy data into the database if it is currently empty.
      */

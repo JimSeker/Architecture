@@ -4,11 +4,9 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.util.Log;
-
 
 /**
- * Created by Seker on 11/16/2017.
+ * This creates the database as needed. keeping a static instance handy.
  */
 @Database(entities = {Score.class,}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
@@ -17,13 +15,11 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static final String DATABASE_NAME = "database-name.db";
 
-    public abstract ScoreDao ScoreDao();
+    public abstract ScoreDao ScoreDao();  //the name of the socreDoa class.
 
 
     public static AppDatabase getInstance(final Context context) {
-        Log.d("AppData", "hi 1");
         if (db == null) {
-            Log.d("AppData", "hi 2");
             db = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME).build();
         }
         return db;

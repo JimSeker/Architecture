@@ -10,7 +10,8 @@ import java.util.Random;
 
 /**
  *  This is very simple code.  This is the "database" class and provides a bridge via SocreDoa method
- *  to the data itself.  At least I think that is what is going on here.
+ *  to the data itself. adds sample data in the initial load of the database, because of this, loaders or a thread is need
+ * for the insert.    likely we should have a thread in populateInitalData so we do it correctly?
  */
 @Database(entities = {Score.class,}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {

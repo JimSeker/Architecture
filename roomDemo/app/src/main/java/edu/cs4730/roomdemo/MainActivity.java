@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /*
  * This is a simple example of how the room architecture to create a simple database.
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Thread myThread = new Thread() {
                     public void run() {
+                        //get all the entries with 3012 as the score.  since it's random, may not be any.
                         logthis("Starting display of score=3012");
                         List<Score> scores = db.ScoreDao().loadScore(3012);
                         if (scores != null) {
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
                             logthis("no data loadScore ");
 
                         }
-
-                        scores = db.ScoreDao().loadAllScores();//myDR.getScores().getValue();
+                        //get all the entries.
+                        scores = db.ScoreDao().selectAll();
                         logthis("Starting display of all data");
                         if (scores != null) {
                             for (Score score : scores) {
@@ -86,17 +88,18 @@ public class MainActivity extends AppCompatActivity {
 
     //this just generates some simple data to be inserted into the database.
     public List<Score> generateScores() {
+        //Random r = new Random();
         final String[] FIRST = new String[]{
                 "Jim", "Fred", "Allyson", "Danny", "Shaya"};
         final int[] SECOND = new int[]{
-                3012, 56, 256, 1001, 2048};
+            3012, 56, 256, 1001, 2048};
 
         List<Score> scores = new ArrayList<Score>();
         for (int i = 0; i < FIRST.length; i++) {
-            Score score = new Score(i, FIRST[i], SECOND[i]);
+            Score score = new Score(FIRST[i], SECOND[i]);
             //score.setId(i);
             //score.setName(FIRST[i]);
-            //score.setScore(SECOND[i]);
+            //score.setScore(r.nextInt(5000));
             scores.add(score);
             logthis("adding data item " + i);
         }

@@ -20,6 +20,10 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.ViewModel;
 
+/**
+ * class to hold the data returned from the room database.  it has livedata, so oberser is here and
+ * pass back, I think.
+ */
 
 import java.util.List;
 
@@ -34,7 +38,7 @@ public class ScoreListViewModel extends ViewModel {
         // set by default null, until we get data from the database.
         mObservableScores.setValue(null);
 
-        LiveData<List<Score>> scores = ad.ScoreDao().loadAllScores();
+        LiveData<List<Score>> scores = ad.ScoreDao().selectAll();
 
         // observe the changes of the scores from the database and forward them
         mObservableScores.addSource(scores, mObservableScores::setValue  );

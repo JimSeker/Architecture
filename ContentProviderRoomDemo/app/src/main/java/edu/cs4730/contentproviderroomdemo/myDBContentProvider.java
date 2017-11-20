@@ -13,18 +13,15 @@ import android.support.annotation.NonNull;
 
 public class myDBContentProvider extends ContentProvider {
 
-	/*
+	/**
      * used the following for a lot of information
 	 * http://thinkandroid.wordpress.com/2010/01/13/writing-your-own-contentprovider/
 	 * 
-	 * We could use the ScoreDatabase, but it is not very generic and we need to create
-	 * generic methods to handle some of the requests, instead just creating them here.
-	 * Plus need  to add stuff for the loader classes as well.
-	 * 
-	 * As a note, this provides a nearly generic content provider for any database.
-	 * specific database names, columns would need to be changed, but otherwise, should
-	 * work for most databases.
+	 * We could use the Score RoomDatabase Plus need  to add stuff for the loader classes as well.
 	 *
+     * This implementation is not complete, since some of the them throw errors, where we should
+     * allow it to happen.  delete all and update all
+     *
 	 * Note there is only one table, so the provider only has score and score_id
 	 * If there were more tables publicly accessible, then we would need more names/numbers for
 	 * urimatcher.
@@ -70,7 +67,7 @@ public class myDBContentProvider extends ContentProvider {
 
     /*
      * So delete is a simple function
-     *   Remember, contentproviders should be used a a wrapper class, so it calls into the ScoreDatabase
+     *   Remember, content providers should be used a a wrapper class, so it calls into the ScoreDatabase
      *   to do the work.  But it does need setup the selection arg correctly.
      *
      */

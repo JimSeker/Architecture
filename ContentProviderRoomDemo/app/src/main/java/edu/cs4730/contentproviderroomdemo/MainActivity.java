@@ -14,9 +14,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-/*
+/**
+ * Simple example of how to create a content provider with a room Database.
  *
- * example requires loaders to work, because it will throw an example about length time on the first query.
+ * Note this example adds sample data in the initial load of the database, because of this, loaders or a thread is need
+ * for the insert.  Normally we won't have a database create and insert together for a content provider, but needs of the example
+ *
+ *  The data is displayed in a listview with a cursor adapter.  We are using the loaders observer, instead of the roomDatabase observers.
  */
 
 public class MainActivity extends AppCompatActivity implements

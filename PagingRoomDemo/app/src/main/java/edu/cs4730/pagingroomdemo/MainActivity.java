@@ -17,6 +17,8 @@ import android.util.Log;
  * device or waiting too long for a big database query.
  *
  * https://developer.android.com/topic/libraries/architecture/paging.html
+ *
+ * This example needs add/update/delete, but at least it provides a simple example to get paging working.
  */
 
 
@@ -43,19 +45,23 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         adapter = new ScoreAdapter(R.layout.my_row, this);
 
-        //we need a thread to load the database.
+        //setup the viewModel with the database.
+        viewModel.set(AppDatabase.getInstance(getBaseContext()).ScoreDao());
+        //set the observer.
+        viewModel.scoreList.observe(MainActivity.this, new Observer<PagedList<Score>>() {
+                @Override
+                public void onChanged(@Nullable PagedList<Score> scores) {
+                    adapter.setList(scores);
+                }
+            }
+        );
+
+        //make sure there is data in the database.  need a thread to insert.
         Thread myThread = new Thread() {
             public void run() {
-                Log.d("MainActivity","starting up thread to get data");
-                viewModel.set(AppDatabase.getInstance(getBaseContext()).ScoreDao());
-                //we can't load set the observer until the database is setup, otherwise the scoreList is null.
-                viewModel.scoreList.observe(MainActivity.this, new Observer<PagedList<Score>>() {
-                            @Override
-                            public void onChanged(@Nullable PagedList<Score> scores) {
-                                adapter.setList(scores);
-                            }
-                        }
-                );
+                Log.d("MainActivity","starting up thread to add data");
+              AppDatabase.AddData();
+
             }
         };
         myThread.start();

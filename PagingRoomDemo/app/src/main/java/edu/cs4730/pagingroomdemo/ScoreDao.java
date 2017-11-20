@@ -22,7 +22,6 @@ public interface ScoreDao {
     @Query("SELECT COUNT(*) FROM " + Score.TABLE_NAME)
     int count();
 
-
     /**
      * Inserts a score into the table.
      *
@@ -44,10 +43,11 @@ public interface ScoreDao {
     /**
      * Select all scores.
      *
-     * @return A {@link Cursor} of all the name and scores in the table.
+     * @return A {@link LivePagedListProvider} of all the name and scores in the table.
      */
     @Query("SELECT * FROM " + Score.TABLE_NAME)
     LivePagedListProvider<Integer, Score> selectAll();
+
 
     @Query("SELECT * FROM "+Score.TABLE_NAME +  " ORDER BY " +Score.COLUMN_NAME+" ASC")
      LivePagedListProvider<Integer, Score> selectByName();
@@ -57,7 +57,7 @@ public interface ScoreDao {
      * Select a score by the ID.
      *
      * @param id The row ID.
-     * @return A {@link Cursor} of the selected cheese.
+     * @return A {@link LivePagedListProvider} of the selected score.
      */
     @Query("SELECT * FROM " + Score.TABLE_NAME + " WHERE " + Score.COLUMN_ID + " = :id")
     LivePagedListProvider<Integer, Score> selectById(long id);
@@ -66,16 +66,16 @@ public interface ScoreDao {
      * Delete a score by the ID.
      *
      * @param id The row ID.
-     * @return A number of cheeses deleted. This should always be {@code 1}.
+     * @return A number of scores deleted. This should always be {@code 1}.
      */
     @Query("DELETE FROM " + Score.TABLE_NAME + " WHERE " + Score.COLUMN_ID + " = :id")
     int deleteById(long id);
 
     /**
-     * Update the score. The cheese is identified by the row ID.
+     * Update the score. The scores is identified by the row ID.
      *
-     * @param scoreData The cheese to update.
-     * @return A number of cheeses updated. This should always be {@code 1}.
+     * @param scoreData The score to update.
+     * @return A number of scores updated. This should always be {@code 1}.
      */
     @Update
     int update(Score scoreData);

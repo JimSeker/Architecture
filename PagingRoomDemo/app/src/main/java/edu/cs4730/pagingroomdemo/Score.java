@@ -15,7 +15,7 @@ import android.provider.BaseColumns;
 @Entity(tableName = Score.TABLE_NAME)
 public class Score {
 
-    /** The name of the Cheese table. */
+    /** The name of the Score table. */
     public static final String TABLE_NAME = "scores";
 
     /** The name of the ID column. */
@@ -27,7 +27,7 @@ public class Score {
     /** The name of the score column. */
     public static final String COLUMN_SCORE = "score";
 
-    /** The unique ID of the cheese. */
+    /** The unique ID each score data pair. */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(index = true, name = COLUMN_ID)
     public long id;
@@ -41,18 +41,43 @@ public class Score {
     public int score;
 
 
-    public Score() {
-    }
-
+    /*
+     * getters and setters for each value.
+     */
     public long getId() {
         return id;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    // blank constructor
+
+    public Score() {
+    }
+
+    // constructor for the 2 data points.
     public Score( String name, int score) {
         this.name = name;
         this.score = score;
     }
 
+    //static method to get the data from ContentValues (for content provider data)
     public static Score fromContentValues(ContentValues values) {
         final Score scoreData = new Score();
         if (values.containsKey(COLUMN_ID)) {
