@@ -13,7 +13,14 @@ google android Architecture examples
 
 <b>PagingRoomDemo</b> is an example using the page library to slowly load the data froma room database into a recyclerview, using PageList, PagedListAdaepter, and LivePagedListProvider (in the RoomDatabase).
 
+<b>retrofit2Demo</b> is a very simple example using the retrofit2 ReST API and JSON, instead of httpURLconnection.  
+
+<b>Retrofit2LiveData</b> is a basic attempt at google's user example (on their web pages) using retrofit2 and LiveData.   This example is still pretty rough, but it does work.
+It uses a private ReST server.  the php backend will be added later on.  This doesn't use JSON, instead the ReST is a basic CSV.
+
+
 notes for next example, livedata with reactiveStreams<BR>
+   Note thie example has become very complex and requires firebasemessaging.  So it will likely be a while, say January if you are waiting for it.
     implementation "android.arch.lifecycle:reactivestreams<BR>
 	https://medium.com/@iammert/offline-app-with-rxjava-2-and-room-ccd0b5c18101  good example, uses older library.<BR>
 	https://developer.android.com/reference/android/arch/lifecycle/LiveDataReactiveStreams.html<BR>
