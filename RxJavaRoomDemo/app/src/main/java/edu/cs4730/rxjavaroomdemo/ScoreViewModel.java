@@ -1,4 +1,4 @@
-package edu.cs4730.rxjavalivedataroomdemo;
+package edu.cs4730.rxjavaroomdemo;
 
 import android.arch.lifecycle.ViewModel;
 

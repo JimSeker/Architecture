@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.cs4730.rxjavalivedataroomdemo.MainActivity">
+    tools:context="edu.cs4730.rxjavaroomdemo.MainActivity">
 
     <TextView
         android:id="@+id/user_name"

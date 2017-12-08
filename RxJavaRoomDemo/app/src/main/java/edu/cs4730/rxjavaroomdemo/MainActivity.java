@@ -1,4 +1,4 @@
-package edu.cs4730.rxjavalivedataroomdemo;
+package edu.cs4730.rxjavaroomdemo;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
