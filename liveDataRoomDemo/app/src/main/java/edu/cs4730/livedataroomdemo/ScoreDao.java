@@ -76,6 +76,13 @@ public interface ScoreDao {
     int deleteById(long id);
 
     /**
+     * Delete all scores.
+     */
+    @Query("DELETE FROM " + Score.TABLE_NAME)
+    void deleteAllScores();
+
+
+    /**
      * Update the score. The score is identified by the row ID.
      *
      * @param scoreData The score to update.

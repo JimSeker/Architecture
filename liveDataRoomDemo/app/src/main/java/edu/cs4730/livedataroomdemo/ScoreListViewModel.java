@@ -21,7 +21,7 @@ import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.ViewModel;
 
 /**
- * class to hold the data returned from the room database.  it has livedata, so oberser is here and
+ * class to hold the data returned from the room database.  it has livedata, so observer is here and
  * pass back, I think.
  */
 
