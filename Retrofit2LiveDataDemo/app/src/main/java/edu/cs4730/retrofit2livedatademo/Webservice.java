@@ -20,8 +20,8 @@ public interface Webservice {
      *
      *
      */
-    //for something like  http://../rest/query.php?id=3012
-    @GET("/rest/query.php")
+    //for something like  http://../rest/data/query.php?id=3012
+    @GET("/rest/data/query.php")
     Call<String> getUser(@Query("id") int userId);
 //    @GET("/posts/{id}")
 //     Call<List<User>> getUser(@Path("id")int userId);

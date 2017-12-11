@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         logger = findViewById(R.id.textview);
 
-        int userId = 12;
+        int userId = 1;
 
         viewModel = ViewModelProviders.of(this).get(UserProfileViewModel.class);
         viewModel.setup(new UserRepository());
