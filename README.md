@@ -20,20 +20,20 @@ It uses a private ReST server.  the php backend will be added later on.  This do
 
 <b>RxJavaRoomDemo</b> is an example of using the Flow in RxJava and room to display data as it changes.  Similiar to LiveData.
 
-notes for next example, livedata with reactiveStreams<BR>
-   Note thie example has become very complex and requires firebasemessaging.  So it will likely be a while, say January if you are waiting for it.
-    implementation "android.arch.lifecycle:reactivestreams<BR>
-	https://medium.com/@iammert/offline-app-with-rxjava-2-and-room-ccd0b5c18101  good example, uses older library.<BR>
-	https://developer.android.com/reference/android/arch/lifecycle/LiveDataReactiveStreams.html<BR>
-	https://android.jlelse.eu/android-reactive-architecture-part-1-introduction-60466bc88774  (kotlin, not java!)<BR>
-	https://developer.android.com/topic/libraries/architecture/guide.html  (able halfway down the page), doesn't work ,but some explainations. <BR>
-	https://github.com/googlesamples/android-architecture-components/tree/master/BasicRxJavaSample  is google's example for it, poorely documented and almost no comments.<BR>
+<br>FcmRetrrofit2LiveDemo</b> is a complex example using many of the examples above that uses a local room database to hold the cache data and receive push 
+updates when the data on the rest service is update.  It uses firebase messaging as well.
+
 
 These may also be helpful links 
-https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e
-https://developer.android.com/topic/libraries/architecture/index.html 
-https://medium.com/@taman.neupane/basic-example-of-livedata-and-viewmodel-14d5af922d0 
-https://medium.com/google-developers/lifecycle-aware-data-loading-with-android-architecture-components-f95484159de4
+https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e<BR>
+https://developer.android.com/topic/libraries/architecture/index.html <BR>
+https://medium.com/@taman.neupane/basic-example-of-livedata-and-viewmodel-14d5af922d0 <BR>
+https://medium.com/google-developers/lifecycle-aware-data-loading-with-android-architecture-components-f95484159de4<BR>
+https://medium.com/@iammert/offline-app-with-rxjava-2-and-room-ccd0b5c18101  good example, uses older library.<BR>
+https://developer.android.com/reference/android/arch/lifecycle/LiveDataReactiveStreams.html<BR>
+https://android.jlelse.eu/android-reactive-architecture-part-1-introduction-60466bc88774  (kotlin, not java!)<BR>
+https://developer.android.com/topic/libraries/architecture/guide.html  (able halfway down the page), doesn't work ,but some explainations. <BR>
+https://github.com/googlesamples/android-architecture-components/tree/master/BasicRxJavaSample  is google's example for it, poorely documented and almost no comments.<BR>
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
 All examples are for Android.

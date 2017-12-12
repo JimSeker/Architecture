@@ -24,7 +24,7 @@ php directory is the php code and readme to create the necessary database for th
   * use sendMessage.php to notify the app about updates.  
   * this code needs cleaned up and commented.  Also likely changed to deal with registration and unregistration.  And it appears the token will need a unique name too.  likely an instance ID. https://developers.google.com/instance-id/guides/android-implementation
   
-* Todo:  If I get time or care.
+Todo:  If I get time or care.
   * update on first instance.
   * add in a real UI in mainactivity
     * also added update, insert, and delete to the app as well.
