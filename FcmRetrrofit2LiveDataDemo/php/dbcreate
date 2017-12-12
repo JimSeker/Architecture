@@ -1,0 +1,22 @@
+mysql -u root -p  //or administrative access to db
+
+//create the database and a user  Change 'password' to a real password, and change the user if you want to.
+//update the infor in the Config.php file as well.
+create database RestDemo;
+grant all privileges on RestDemo.* to restdemo@localhost identified by 'password';
+
+//connect to RestDemo 
+connect RestDemo;
+//first the firebase table to hold the devices.  likely there needs to more columns, for things like groups?
+CREATE TABLE devices (
+  id int(11) PRIMARY KEY AUTO_INCREMENT,
+  token text NOT NULL
+);
+
+//simple table, for the score data, which is called restdata.
+CREATE TABLE restdata(
+  id int(11) PRIMARY KEY AUTO_INCREMENT,
+  name varchar(100) NOT NULL,
+  score int(11) NOT NULL
+);
+
