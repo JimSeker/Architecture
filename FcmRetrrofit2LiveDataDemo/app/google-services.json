@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "893835777690",
+    "firebase_url": "https://fcmretrrofit2livedatademo.firebaseio.com",
+    "project_id": "fcmretrrofit2livedatademo",
+    "storage_bucket": "fcmretrrofit2livedatademo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893835777690:android:6bda418f3cf22aef",
+        "android_client_info": {
+          "package_name": "edu.cs4730.fcmretrrofit2livedatademo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893835777690-crkp0ah67jbtjg9de14mbseiotlv8gck.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.cs4730.fcmretrrofit2livedatademo",
+            "certificate_hash": "959c3e0026d20f7084b274d9851189a8c2e53d9b"
+          }
+        },
+        {
+          "client_id": "893835777690-0hp4t68s5n9l3bb6o126q44v2ou2uong.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVZbMLOcxYCIZXiwJvEeh96TZqmmgqoqk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893835777690-0hp4t68s5n9l3bb6o126q44v2ou2uong.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
