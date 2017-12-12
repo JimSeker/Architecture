@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-        AppDatabase ad = AppDatabase.getInstance(this);
+               AppDatabase ad = AppDatabase.getInstance(this);
 
         ScoreListViewModel scoreListViewModel = new ScoreListViewModel(ad);
         scoreListViewModel.getScores().observe(this, new Observer<List<Score>>() {
@@ -132,5 +130,35 @@ public class MainActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //load update from rest service.
+        SharedPrefManager.getInstance(getApplicationContext()).saveActivityStatus(true);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        //are their updates and is this the first time.
+        String info = SharedPrefManager.getInstance(getApplicationContext()).getUpdateStatus();
+        if (info == null) {  //first time, register and get data
+            sendTokenToServer();
+            info = "yes"; //force the update.
+        }
+        if (info.compareTo("yes")==0 ) { //update data
+            ScoreRepository sr = new ScoreRepository(this);
+            sr.getAllScores();
+            SharedPrefManager.getInstance(getApplicationContext()).saveUpdateStatus("no");  //we are current.
+        }
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        //don't load update from rest service.
+        SharedPrefManager.getInstance(getApplicationContext()).saveActivityStatus(false);
     }
 }

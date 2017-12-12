@@ -7,19 +7,27 @@
     android:layout_height="match_parent"
     tools:context="edu.cs4730.fcmretrrofit2livedatademo.MainActivity">
 
-    <TextView
-        android:id="@+id/logger"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Log:\n"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/logger"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Log:\n"
+            />
+
+    </ScrollView>
 
     <Button
         android:id="@+id/button2"
@@ -34,5 +42,6 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         />
+
 
 </android.support.constraint.ConstraintLayout>
