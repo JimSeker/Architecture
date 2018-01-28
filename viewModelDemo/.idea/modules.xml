@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\seker\git\Architecture\viewModelDemo\app\app.iml" filepath="C:\Users\seker\git\Architecture\viewModelDemo\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/viewModelDemo.iml" filepath="$PROJECT_DIR$/viewModelDemo.iml" />
+      <module fileurl="file://C:\Users\seker\git\Architecture\viewModelDemo\viewModelDemo.iml" filepath="C:\Users\seker\git\Architecture\viewModelDemo\viewModelDemo.iml" />
     </modules>
   </component>
 </project>

@@ -15,7 +15,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static final String DATABASE_NAME = "database-name.db";
 
-    public abstract ScoreDao ScoreDao();  //the name of the socreDoa class.
+    public abstract ScoreDao ScoreDao();  //the name of the scoreDoa class.
 
 
     public static AppDatabase getInstance(final Context context) {

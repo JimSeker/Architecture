@@ -58,7 +58,7 @@ public class UserRepository {
         // This is not an optimal implementation, we'll fix it below
         final MutableLiveData<User> data = new MutableLiveData<>();
         Call<String> call = webservice.getUser(userId);
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<String>() {      //this implements the Call<String> needed by the interface.
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.d("response", "in response...");
