@@ -41,8 +41,8 @@ public class ScoreListViewModel extends ViewModel {
         LiveData<List<Score>> scores = ad.ScoreDao().selectAll();
 
         // observe the changes of the scores from the database and forward them
-        mObservableScores.addSource(scores, mObservableScores::setValue  );
-                //note mObservableScores::setValue is lamba expression, which I don't actually know what it is doing.
+        mObservableScores.addSource(scores, mObservableScores::setValue);
+        //note mObservableScores::setValue is lamba expression, which I don't actually know what it is doing.
     }
 
     /**
