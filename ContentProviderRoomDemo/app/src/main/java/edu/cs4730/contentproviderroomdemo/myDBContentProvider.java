@@ -14,9 +14,7 @@ import android.support.annotation.NonNull;
 public class myDBContentProvider extends ContentProvider {
 
 	/**
-     * used the following for a lot of information
-	 * http://thinkandroid.wordpress.com/2010/01/13/writing-your-own-contentprovider/
-	 * 
+	 *
 	 * We could use the Score RoomDatabase Plus need  to add stuff for the loader classes as well.
 	 *
      * This implementation is not complete, since some of the them throw errors, where we should
@@ -25,6 +23,9 @@ public class myDBContentProvider extends ContentProvider {
 	 * Note there is only one table, so the provider only has score and score_id
 	 * If there were more tables publicly accessible, then we would need more names/numbers for
 	 * urimatcher.
+     *
+     * NOTE this example is ignoring the where cause/selection that is passed to the content provider
+     * This is likely a very bad idea, but is allowed for the purpose of the example.
 	 */
 
     public static final String PROVIDER_NAME = "edu.cs4730.scoreroomprovider";

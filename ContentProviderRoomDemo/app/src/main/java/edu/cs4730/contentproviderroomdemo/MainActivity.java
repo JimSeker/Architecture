@@ -1,7 +1,9 @@
 package edu.cs4730.contentproviderroomdemo;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -84,6 +86,13 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
+        findViewById(R.id.fab2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addData();
+            }
+        });
+
     }
 
 
@@ -109,6 +118,22 @@ public class MainActivity extends AppCompatActivity implements
         Log.d(TAG, "onLoaderReset");
         // called when the data is no longer valid, so remove the cursor
         dataAdapter.swapCursor(null);
+    }
+
+    //added purely to test that the loaders in this example are working correctly.
+    public void addData() {
+        //must be in an async task, so the it doesn't lock up the main thread (or done on another thread)
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                // Insert Data
+                ContentValues initialValues = new ContentValues();
+                initialValues.put(Score.COLUMN_NAME, "Fred Flintstone");
+                initialValues.put(Score.COLUMN_SCORE, "11223344");
+                Uri uri = getContentResolver().insert(CONTENT_URI, initialValues);
+            }
+        });
+
     }
 
 }
