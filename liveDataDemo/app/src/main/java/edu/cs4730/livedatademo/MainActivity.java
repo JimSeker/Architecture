@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable dataObj data) {
                 logthis("Data changed, updating!");
-                et_name.removeTextChangedListener(mlistener);  //if not, then this will loop infinitly.
+                et_name.removeTextChangedListener(mlistener);  //if not, then this will loop infinitely.
                 et_name.setText(data.name);
                 et_name.addTextChangedListener(mlistener);
                 tv_count.setText(data.getCount());
