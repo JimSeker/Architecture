@@ -1,4 +1,4 @@
-google android Architecture examples
+Android Architecture examples
 ===========
 
 <b>viewModelDemo</b> is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
@@ -22,9 +22,10 @@ It uses a private ReST server.  the php backend will be added later on.  This do
 
 <b>RxJavaRoomDemo</b> is an example of using the Flow in RxJava and room to display data as it changes.  Similiar to LiveData.
 
-<br>FcmRetrrofit2LiveDemo</b> is a complex example using many of the examples above that uses a local room database to hold the cache data and receive push 
+<b>FcmRetrrofit2LiveDemo</b> is a complex example using many of the examples above that uses a local room database to hold the cache data and receive push 
 updates when the data on the rest service is update.  It uses firebase messaging as well.
 
+<b>WorkManagerDemo</b> is an example of using the Architecture Worker Tasks.  This example is in located in https://github.com/JimSeker/service repo.
 
 These may also be helpful links 
 https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e<BR>
@@ -34,8 +35,8 @@ https://medium.com/google-developers/lifecycle-aware-data-loading-with-android-a
 https://medium.com/@iammert/offline-app-with-rxjava-2-and-room-ccd0b5c18101  good example, uses older library.<BR>
 https://developer.android.com/reference/android/arch/lifecycle/LiveDataReactiveStreams.html<BR>
 https://android.jlelse.eu/android-reactive-architecture-part-1-introduction-60466bc88774  (kotlin, not java!)<BR>
-https://developer.android.com/topic/libraries/architecture/guide.html  (able halfway down the page), doesn't work ,but some explainations. <BR>
-https://github.com/googlesamples/android-architecture-components/tree/master/BasicRxJavaSample  is google's example for it, poorely documented and almost no comments.<BR>
+https://developer.android.com/topic/libraries/architecture/guide.html  (able halfway down the page), doesn't work ,but some explanations. <BR>
+https://github.com/googlesamples/android-architecture-components/tree/master/BasicRxJavaSample  is Google's example for it, poorly documented and almost no comments.<BR>
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
 All examples are for Android.
