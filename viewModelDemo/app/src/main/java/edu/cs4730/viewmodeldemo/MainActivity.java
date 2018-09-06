@@ -1,7 +1,5 @@
 package edu.cs4730.viewmodeldemo;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 /*
  * this is a simple example to show how the ViewModel class works and how to separate
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         //then return to see it work.
         //tv_count.setText(mViewModel.getCount());
 
-        et_name = (EditText) findViewById(R.id.et_name);
+        et_name = findViewById(R.id.et_name);
         et_name.setText(mViewModel.name);
         et_name.addTextChangedListener(new TextWatcher() {
             @Override

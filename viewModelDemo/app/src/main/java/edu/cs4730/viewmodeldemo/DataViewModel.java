@@ -1,6 +1,6 @@
 package edu.cs4730.viewmodeldemo;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 /**
  * this is a simple viewmodel class holding two data items.

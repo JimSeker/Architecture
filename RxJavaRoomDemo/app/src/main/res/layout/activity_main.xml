@@ -17,14 +17,15 @@
 
     <EditText
         android:id="@+id/user_name_input"
-        android:hint="name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="name"/>
+
     <EditText
         android:id="@+id/user_score_input"
-        android:hint="score"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="score"/>
 
     <Button
         android:id="@+id/update_user"

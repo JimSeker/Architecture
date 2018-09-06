@@ -1,8 +1,8 @@
 package edu.cs4730.roomdemo;
 
-import android.arch.persistence.room.Room;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 /*
  * This is a simple example of how the room architecture to create a simple database.
@@ -24,16 +27,31 @@ public class MainActivity extends AppCompatActivity {
     AppDatabase db;
     TextView logger;
     String TAG = "MainActivity";
+    protected Handler handler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        logger = (TextView) findViewById(R.id.logger);
+        logger = findViewById(R.id.logger);
+
+        //queries are not on the UI thread, so we need a handler to update the display.
+        handler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                Bundle stuff = msg.getData();
+                String item  = stuff.getString("logthis", "error");
+                Log.wtf(TAG, "got something? " + item);
+                logger.append( item+ "\n");
+                return true;
+            }
+        });
+
 
         //open(create) the database.
         db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-name").build();
+            AppDatabase.class, "database-name").build();
 
 
         findViewById(R.id.btn_display).setOnClickListener(new View.OnClickListener() {
@@ -90,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     public List<Score> generateScores() {
         //Random r = new Random();
         final String[] FIRST = new String[]{
-                "Jim", "Fred", "Allyson", "Danny", "Shaya"};
+            "Jim", "Fred", "Allyson", "Danny", "Shaya"};
         final int[] SECOND = new int[]{
             3012, 56, 256, 1001, 2048};
 
@@ -110,7 +128,12 @@ public class MainActivity extends AppCompatActivity {
     void logthis(String item) {
         if (item != null && item.compareTo("") != 0) {
             Log.d(TAG, item);
-            logger.append(item + "\n");
+            //this mostly not on the main thread now, so need to message back.
+            Bundle b = new Bundle();
+            b.putString("logthis", item);
+            Message msg = handler.obtainMessage();
+            msg.setData(b);
+            handler.sendMessage(msg);
         }
     }
 }

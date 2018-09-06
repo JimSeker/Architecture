@@ -1,7 +1,6 @@
 package edu.cs4730.rxjavaroomdemo;
 
-import android.arch.lifecycle.ViewModel;
-
+import androidx.lifecycle.ViewModel;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.functions.Action;
@@ -53,7 +52,7 @@ public class ScoreViewModel extends ViewModel {
                 // if there's no use, create a new user.
                 // if we already have a user, then, since the user object is immutable,
                 // create a new user, with the id of the previous user and the updated user name.
-                if (mScore == null )
+                if (mScore == null)
                     mScore = new Score(ScoreName, Integer.valueOf(ScoreValue));
                 else {
                     //mScore = new Score(mScore.getId(), ScoreName, Integer.valueOf(ScoreValue));  //don't need a new object with updated data!

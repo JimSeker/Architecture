@@ -1,9 +1,10 @@
 package edu.cs4730.rxjavaroomdemo;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
+
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
 /**
  * This creates the database as needed. keeping a static instance handy.

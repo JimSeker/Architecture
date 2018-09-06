@@ -1,7 +1,8 @@
 package edu.cs4730.roomdemo;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 /**
  * Score  Plain Old Java Object  This needs to provide getters and setters for everything plus the
@@ -9,6 +10,7 @@ import android.arch.persistence.room.PrimaryKey;
  */
 
 @Entity
+
 public class Score {
     /**
      * The unique ID each score data pair.
@@ -53,7 +55,7 @@ public class Score {
 
 
     // blank constructor
-
+    @Ignore
     public Score() {
     }
 
