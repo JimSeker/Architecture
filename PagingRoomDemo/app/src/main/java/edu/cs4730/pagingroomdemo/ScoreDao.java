@@ -1,5 +1,6 @@
 package edu.cs4730.pagingroomdemo;
 
+import android.arch.paging.DataSource;
 import android.arch.paging.LivePagedListProvider;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
@@ -43,24 +44,24 @@ public interface ScoreDao {
     /**
      * Select all scores.
      *
-     * @return A {@link LivePagedListProvider} of all the name and scores in the table.
+     * @return A {@link DataSource.Factory} of all the name and scores in the table.
      */
     @Query("SELECT * FROM " + Score.TABLE_NAME)
-    LivePagedListProvider<Integer, Score> selectAll();
+    public abstract DataSource.Factory<Integer, Score> selectAll();
 
 
     @Query("SELECT * FROM "+Score.TABLE_NAME +  " ORDER BY " +Score.COLUMN_NAME+" ASC")
-     LivePagedListProvider<Integer, Score> selectByName();
+    public abstract DataSource.Factory<Integer, Score> selectByName();
 
 
     /**
      * Select a score by the ID.
      *
      * @param id The row ID.
-     * @return A {@link LivePagedListProvider} of the selected score.
+     * @return A {@link DataSource.Factory} of the selected score.
      */
     @Query("SELECT * FROM " + Score.TABLE_NAME + " WHERE " + Score.COLUMN_ID + " = :id")
-    LivePagedListProvider<Integer, Score> selectById(long id);
+    public abstract DataSource.Factory<Integer, Score> selectById(long id);
 
     /**
      * Delete a score by the ID.

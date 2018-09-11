@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.scoreList.observe(MainActivity.this, new Observer<PagedList<Score>>() {
                 @Override
                 public void onChanged(@Nullable PagedList<Score> scores) {
-                    adapter.setList(scores);
+                    adapter.submitList(scores);
                 }
             }
         );
