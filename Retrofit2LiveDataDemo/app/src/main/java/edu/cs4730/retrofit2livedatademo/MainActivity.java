@@ -13,6 +13,10 @@ import android.widget.TextView;
  *
  * auth https://stackoverflow.com/questions/43366164/retrofit-and-okhttp-basic-authentication
  *
+ * Note, https://koz.io/android-m-and-the-war-on-cleartext-traffic/
+ *   In the AndroidManifest.xml there is < application ... android:usesCleartextTraffic="true" ...
+ *   The test server doesn't have a legit cert, so... @#$@ it, cleartext it is.
+ *   For real app, with legit certs on web servers, you should use https and remove the above.
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(@Nullable User user) {
                 //update the ui!
                 Log.d("main", user.getUser());
-                logger.setText(user.getUser());
+                logger.append(user.getUser());
             }
         });
     }

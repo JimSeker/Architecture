@@ -30,6 +30,7 @@ public class UserRepository {
     UserRepository() {
 
         //for authentication.
+
         Interceptor BasicAuthInterceptor = new Interceptor() {
             @Override
             public okhttp3.Response intercept(Chain chain) throws IOException {

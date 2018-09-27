@@ -1,11 +1,12 @@
 package edu.cs4730.retrofit2demo;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
- *  basic example, taking from http://www.vogella.com/tutorials/Retrofit/article.html  
- 
+ *  basic example, taking from http://www.vogella.com/tutorials/Retrofit/article.html
+ *
+ *  Note the output is all the logcat, not the screen.
  */
 
 public class MainActivity extends AppCompatActivity {
