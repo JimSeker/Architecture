@@ -1,8 +1,9 @@
 package edu.cs4730.fcmretrrofit2livedatademo;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 import android.content.ContentValues;
 import android.provider.BaseColumns;
 
@@ -70,11 +71,12 @@ public class Score {
     }
 
     // blank constructor
-
+    @Ignore
     public Score() {
     }
 
     // constructor for the 2 data points.
+    @Ignore
     public Score(String name, int score) {
         this.name = name;
         this.score = score;
