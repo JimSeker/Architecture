@@ -5,6 +5,7 @@ import android.provider.BaseColumns;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
@@ -68,11 +69,12 @@ public class Score {
     }
 
     // blank constructor
-
+    @Ignore
     public Score() {
     }
 
     // constructor for the 2 data points.
+    @Ignore
     public Score(String name, int score) {
         this.name = name;
         this.score = score;

@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 /**
  * This creates the database as needed. keeping a static instance handy.
  */
-@Database(entities = {Score.class,}, version = 1)
+@Database(entities = {Score.class,}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase db;
