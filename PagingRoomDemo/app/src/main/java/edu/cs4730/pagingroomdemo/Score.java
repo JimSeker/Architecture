@@ -2,6 +2,7 @@ package edu.cs4730.pagingroomdemo;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.content.ContentValues;
 import android.provider.BaseColumns;
@@ -67,7 +68,7 @@ public class Score {
     }
 
     // blank constructor
-
+    @Ignore
     public Score() {
     }
 

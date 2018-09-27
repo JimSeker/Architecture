@@ -1,19 +1,14 @@
 package edu.cs4730.pagingroomdemo;
 
 import android.arch.paging.DataSource;
-import android.arch.paging.LivePagedListProvider;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
-import android.database.Cursor;
-
-import java.util.List;
 
 /**
  * This is the Dao for the score "db"  It provides the accessor methods to the database.
- *
+ * <p>
  * In this version, queries have a return version of  LivePagedListProvider so they can be
  * used with the recyclerview and livepageadapter.
  */
@@ -50,7 +45,7 @@ public interface ScoreDao {
     public abstract DataSource.Factory<Integer, Score> selectAll();
 
 
-    @Query("SELECT * FROM "+Score.TABLE_NAME +  " ORDER BY " +Score.COLUMN_NAME+" ASC")
+    @Query("SELECT * FROM " + Score.TABLE_NAME + " ORDER BY " + Score.COLUMN_NAME + " ASC")
     public abstract DataSource.Factory<Integer, Score> selectByName();
 
 
@@ -80,7 +75,6 @@ public interface ScoreDao {
      */
     @Update
     int update(Score scoreData);
-
 
 
 }
