@@ -2,14 +2,12 @@ package edu.cs4730.roomdemo;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -35,19 +33,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         logger = findViewById(R.id.logger);
-
-        //queries are not on the UI thread, so we need a handler to update the display.
-        handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                Bundle stuff = msg.getData();
-                String item  = stuff.getString("logthis", "error");
-                Log.wtf(TAG, "got something? " + item);
-                logger.append( item+ "\n");
-                return true;
-            }
-        });
-
 
         //open(create) the database.
         db = Room.databaseBuilder(getApplicationContext(),
@@ -125,15 +110,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //simple logger function to both the debug and logger textview.
-    void logthis(String item) {
+    void logthis(final String item) {
         if (item != null && item.compareTo("") != 0) {
             Log.d(TAG, item);
-            //this mostly not on the main thread now, so need to message back.
-            Bundle b = new Bundle();
-            b.putString("logthis", item);
-            Message msg = handler.obtainMessage();
-            msg.setData(b);
-            handler.sendMessage(msg);
+            //We are likely not the main UI thread, so lets get there.
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    logger.append(item + "\n");
+                }
+            });
         }
     }
 }

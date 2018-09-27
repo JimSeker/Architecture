@@ -11,13 +11,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
-/*
+/**
  * this is a simple example to show how the ViewModel class works and how to separate
  * the data (ie model) from the UI (view/controller of the MVC) as well.
- *
+ * <p>
  * using the modelView class also allows the data to survive a rotation on the device as well.
  * so it doesn't need to be reloaded or stored in preference bundle.
  */
+
 public class MainActivity extends AppCompatActivity {
 
     EditText et_name;
@@ -71,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     /*`
-    * simple method to add the log TextView.
-    */
+     * simple method to add the log TextView.
+     */
     public void logthis(String newinfo) {
         if (newinfo.compareTo("") != 0) {
             logger.append(newinfo + "\n");

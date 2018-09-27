@@ -12,4 +12,6 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract ScoreDao ScoreDao();
 
+
+    //normally there should be a static method to create the db, which is done in the mainactivity in this example.
 }

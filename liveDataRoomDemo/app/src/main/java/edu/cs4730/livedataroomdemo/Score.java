@@ -1,14 +1,15 @@
 package edu.cs4730.livedataroomdemo;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import android.content.ContentValues;
 import android.provider.BaseColumns;
 
 /**
- * S/**
- * Score  Plain Old Java Object  This needs to provide getters and setters for everything plus the
+ * Score is Plain Old Java Object (POJO)  This needs to provide getters and setters for everything plus the
  * constructors for the object.   The table in the database is specified as scores
  */
 
@@ -16,28 +17,42 @@ import android.provider.BaseColumns;
 @Entity(tableName = Score.TABLE_NAME)
 public class Score {
 
-    /** The name of the Score table. */
+    /**
+     * The name of the Score table.
+     */
     public static final String TABLE_NAME = "scores";
 
-    /** The name of the ID column. */
+    /**
+     * The name of the ID column.
+     */
     public static final String COLUMN_ID = BaseColumns._ID;
 
-    /** The name of the name column. */
+    /**
+     * The name of the name column.
+     */
     public static final String COLUMN_NAME = "name";
 
-    /** The name of the score column. */
+    /**
+     * The name of the score column.
+     */
     public static final String COLUMN_SCORE = "score";
 
-    /** The unique ID each score data pair. */
+    /**
+     * The unique ID each score data pair.
+     */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(index = true, name = COLUMN_ID)
     public long id;
 
-    /** The name of the person. */
+    /**
+     * The name of the person.
+     */
     @ColumnInfo(name = COLUMN_NAME)
     public String name;
 
-    /** The person's score. */
+    /**
+     * The person's score.
+     */
     @ColumnInfo(name = COLUMN_SCORE)
     public int score;
 
@@ -66,13 +81,13 @@ public class Score {
         this.score = score;
     }
 
-    // blank constructor
-
+    // blank constructor, the ignore is for database, so it doesn't choose this one.
+    @Ignore
     public Score() {
     }
 
     // constructor for the 2 data points.
-    public Score( String name, int score) {
+    public Score(String name, int score) {
         this.name = name;
         this.score = score;
     }
@@ -111,5 +126,4 @@ public class Score {
         "Remus Lupin", "Rits Skeeter", "Roger Davies", "Romilda Vane", "Ron Weasley", "Rose Zeller", "Rowena Ravenclaw", "Rubeus Hagrid", "Rufus Scrimgeour", "Salazar Slytherin",
         "Sally-Anne Perks", "Seamus Finnigan", "Nicholas De Mimsey Porpington", "Sirius Black", "Susan Bones", "The Bloody Barron", "Grey Lady", "Theodore Nott", "Tom Riddle", "Vernon Dursley",
         "Victoria Frobisher", "Viktor Krum", "Vincent Crabbe"};
-
 }

@@ -4,11 +4,11 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +23,9 @@ import android.widget.Toast;
  * for the insert.  Normally we won't have a database create and insert together for a content provider, but needs of the example
  *
  *  The data is displayed in a listview with a cursor adapter.  We are using the loaders observer, instead of the roomDatabase observers.
+ *
+ *  Note, Loaders have been deprecated in API 28.  Supported to replace them with modelview and livedata.  set the observer on the cursor
+ *  coming back via the content provider should work.
  */
 
 public class MainActivity extends AppCompatActivity implements

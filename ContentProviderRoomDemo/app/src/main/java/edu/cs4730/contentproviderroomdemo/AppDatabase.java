@@ -1,19 +1,21 @@
 package edu.cs4730.contentproviderroomdemo;
 
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
 import android.content.Context;
 
 import java.util.Random;
 
 /**
- *  This is very simple code.  This is the "database" class and provides a bridge via SocreDoa method
- *  to the data itself. adds sample data in the initial load of the database, because of this, loaders or a thread is need
+ * This is very simple code.  This is the "database" class and provides a bridge via SocreDoa method
+ * to the data itself. adds sample data in the initial load of the database, because of this, loaders or a thread is need
  * for the insert.    likely we should have a thread in populateInitalData so we do it correctly?
  */
-@Database(entities = {Score.class,}, version = 1)
+
+@Database(entities = {Score.class,}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract ScoreDao ScoreDao();
 
@@ -28,8 +30,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public static synchronized AppDatabase getInstance(Context context) {
         if (sInstance == null) {
             sInstance = Room
-                    .databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name")
-                    .build();
+                .databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name")
+                .build();
             sInstance.populateInitialData();
         }
         return sInstance;
@@ -55,7 +57,4 @@ public abstract class AppDatabase extends RoomDatabase {
             }
         }
     }
-
-
-
 }

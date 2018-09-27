@@ -1,9 +1,10 @@
 package edu.cs4730.livedatademo;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,12 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
-/*
- * a simple example of using liveData .
- *
+/**
+ * a simple example of using liveData.
+ * <p>
  * this example has a problem with the edittext, so this will actually cause the user
  * to insert information "backward" from the order of typing.
+ *
+ * The "logger" text is the only one that is not saved, so it resets when the phone rotates.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Button addcount;
     DataViewModel mViewModel;
 
+    //this is a terrible way to do this, since the text change triggers the observer to update
+    //the edittext text is reversed.  but this is a demo, so I'm going with it anyway.
     TextWatcher mlistener = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -50,20 +54,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //get the modelview.
         mViewModel = ViewModelProviders.of(this).get(DataViewModel.class);
 
-
         logger = findViewById(R.id.logger);
-
         tv_count = findViewById(R.id.tv_count);
-        //comment out, click the button a couple of times and then rotate phone.  should reset to zero.
-        //then return to see it work.
-        //tv_count.setText(mViewModel.getCount());
-
-        et_name = (EditText) findViewById(R.id.et_name);
-
+        et_name = findViewById(R.id.et_name);
         et_name.addTextChangedListener(mlistener);
 
+        //set the observer for when the data changes.  It will then update.
+        //Note, when the phone rotates, this will be called, because the data is new to the activity.
         mViewModel.getData().observe(this, new Observer<dataObj>() {
             @Override
             public void onChanged(@Nullable dataObj data) {
@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         addcount = findViewById(R.id.btn_add_count);
+
+        //change the count.
         addcount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,15 +87,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    /*`
-    * simple method to add the log TextView.
-    */
+    /**
+     * simple method to add the log TextView.
+     */
     public void logthis(String newinfo) {
         if (newinfo.compareTo("") != 0) {
             logger.append(newinfo + "\n");
         }
     }
-
-
 }

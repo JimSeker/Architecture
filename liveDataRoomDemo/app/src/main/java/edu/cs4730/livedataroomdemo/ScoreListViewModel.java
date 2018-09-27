@@ -16,10 +16,10 @@
 
 package edu.cs4730.livedataroomdemo;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MediatorLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.Nullable;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.annotation.Nullable;
 
 /**
  * class to hold the data returned from the room database.  it has livedata, so observer is here and
@@ -42,13 +42,13 @@ public class ScoreListViewModel extends ViewModel {
         LiveData<List<Score>> scores = ad.ScoreDao().selectAll();
 
         // observe the changes of the scores from the database and forward them
-         //lambda expression 1, which makes little sense.
+        //lambda expression 1, which makes little sense.
         //mObservableScores.addSource(scores, mObservableScores::setValue);
         //lambda expression 2  this makes more sense then above method.  scoreEntities is the parameter to the method,
         //  scores and scoreEntities are the same.  score is the source and scoreEntities is the destination.
         //mObservableScores.addSource(scores, scoreEntities -> { mObservableScores.setValue(scoreEntities); } );
         //this is the java one.
-        mObservableScores.addSource(scores, new android.arch.lifecycle.Observer<List<Score>>() {
+        mObservableScores.addSource(scores, new androidx.lifecycle.Observer<List<Score>>() {
                 @Override
                 public void onChanged(@Nullable List<Score> scoreEntities) {
                     mObservableScores.setValue(scoreEntities);

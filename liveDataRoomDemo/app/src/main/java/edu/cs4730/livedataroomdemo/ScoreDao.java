@@ -1,11 +1,11 @@
 package edu.cs4730.livedataroomdemo;
-import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
-import android.database.Cursor;
+
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -13,7 +13,6 @@ import java.util.List;
  * This is the Dao for the score "db" It provides the accessor methods to the database.
  * In this example, the return value is LiveData, so an observer can be added else to see when
  * the data changes.
- *
  */
 @Dao
 public interface ScoreDao {
@@ -27,8 +26,8 @@ public interface ScoreDao {
     LiveData<List<Score>> selectAll();
 
 
-    @Query("SELECT * FROM "+Score.TABLE_NAME +  " ORDER BY " +Score.COLUMN_NAME+" ASC")
-    LiveData<List<Score>>selectByName();
+    @Query("SELECT * FROM " + Score.TABLE_NAME + " ORDER BY " + Score.COLUMN_NAME + " ASC")
+    LiveData<List<Score>> selectByName();
 
     /**
      * Select a score by the ID.
@@ -90,7 +89,6 @@ public interface ScoreDao {
      */
     @Update
     int update(Score scoreData);
-
 
 
 }

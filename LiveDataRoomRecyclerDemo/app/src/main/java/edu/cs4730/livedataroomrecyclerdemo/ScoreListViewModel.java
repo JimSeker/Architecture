@@ -16,10 +16,10 @@
 
 package edu.cs4730.livedataroomrecyclerdemo;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MediatorLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.Nullable;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.annotation.Nullable;
 
 import java.util.List;
 import java.util.Observable;
@@ -50,7 +50,7 @@ public class ScoreListViewModel extends ViewModel {
         //  scores and scoreEntities are the same.  score is the source and scoreEntities is the destination.
         //mObservableScores.addSource(scores, scoreEntities -> { mObservableScores.setValue(scoreEntities); } );
         //this is the java one.
-        mObservableScores.addSource(scores, new android.arch.lifecycle.Observer<List<Score>>() {
+        mObservableScores.addSource(scores, new androidx.lifecycle.Observer<List<Score>>() {
                 @Override
                 public void onChanged(@Nullable List<Score> scoreEntities) {
                     mObservableScores.setValue(scoreEntities);
