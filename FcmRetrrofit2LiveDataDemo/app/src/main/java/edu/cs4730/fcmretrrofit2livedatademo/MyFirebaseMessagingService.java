@@ -7,6 +7,7 @@ import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Trigger;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -21,6 +22,25 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
+
+
+    /**
+     * Replacement for the FirebaseInstanceID service, which was depreciated in 17.x
+     *
+     * This is called on at least the first startup.  it generates a unique token that is
+     * used by the cloud messaging system.  definitely save the token for later use.
+     *
+     * @param token
+     */
+    @Override
+    public void onNewToken(String token) {
+        super.onNewToken(token);
+
+        Log.wtf(TAG, "FCM Token: " + token);
+        //store the token for later use in the app.
+        SharedPrefManager.getInstance(getApplicationContext()).saveDeviceToken(token);
+    }
+
 
     //This is called when we get a new push message.
     @Override
