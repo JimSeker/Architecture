@@ -19,7 +19,7 @@ if ($token != "" ) {
     $sql = "INSERT into devices (token) values ('$token')";
     //echo "$sql\n";
     $result = mysql_query($sql);
-    if (msyql_affected_rows($link_id) == 1) {
+    if (mysql_affected_rows($link_id) == 1) {
       $response['error'] = false; 
       $response['message'] = 'Device registered successfully';
     } else {
