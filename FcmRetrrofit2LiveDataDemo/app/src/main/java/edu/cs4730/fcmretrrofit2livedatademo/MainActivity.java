@@ -14,7 +14,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,17 +30,20 @@ import android.widget.Toast;
 /**
  * This project is in a nutshell, only ask for data from the network, when it has been updated on the network.
  * We use Firebase messaging to notify the app, the data has changed.  Retrofit2 to update the data in to the room database
- * which the liveData will see and update the interface.   So the data will always be current, with a minual network traffic.
+ * which the liveData will see and update the interface.   So the data will always be current, with a minimal network traffic.
  * Using contentproivders terms, we have loaders for the rest service.
  * <p>
  * this just uses the textview to display info.  There is a button to register for the updates.  This would likely be done
  * the app first time runs?  or refresh of the token.   Not sure on the timing of this.
+ *
+ * It should stated, this is not a full app, just a demo of how the pieces can work.
+ *
+ * Note the ProgressDialog was deprecated in API 26.  This will need to be fixed at some point.
  */
 
 public class MainActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
-    AppDatabase db;
     TextView logger;
     String TAG = "MainActivity";
 
