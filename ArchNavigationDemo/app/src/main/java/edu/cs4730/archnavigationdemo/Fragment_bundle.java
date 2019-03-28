@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 /**
  * This is a simple fragment to show use to receive a bundle via the nav_graph.  see fragment_two for the
  * bundle creation and send.

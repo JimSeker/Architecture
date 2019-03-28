@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- *  This example receives arguments via the safe_arg version.  Not safe args are included inn Project build.grade (not module).
+ *  This example receives arguments via the safe_arg version.  Note safe args are included in Project build.grade (not module).
  */
 
 public class Fragment_Three extends Fragment {

@@ -1,6 +1,5 @@
 package edu.cs4730.archnavigationdemo;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+
+/**
+ * Second fragment to seen by the use.  This also shows how to pass data via a bundle or safe_args.
+ */
 
 public class Fragment_two extends Fragment {
     EditText et;

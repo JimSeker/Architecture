@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+/**
+ * This fragment is the "main" fragment that is shown first.
+ */
 
 public class FragmentMain extends Fragment {
 
@@ -23,7 +26,7 @@ public class FragmentMain extends Fragment {
         View myView = inflater.inflate(R.layout.fragment_main, container, false);
         Button btn = myView.findViewById(R.id.button);
 
-        //add transaction for the button.
+        //add transaction for the button or the convenience method below (uncommented).
        /* btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
