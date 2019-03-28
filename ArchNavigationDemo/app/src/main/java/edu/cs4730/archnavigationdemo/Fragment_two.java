@@ -47,7 +47,7 @@ public class Fragment_two extends Fragment {
             @Override
             public void onClick(View view) {
                 //get the "action" and add the parameters to it.  Then navigate to it.
-                Fragment_twoDirections.ActionFragmentTwoToFragmentThree action = new Fragment_twoDirections.ActionFragmentTwoToFragmentThree();
+                Fragment_twoDirections.ActionFragmentTwoToFragmentThree action = Fragment_twoDirections.actionFragmentTwoToFragmentThree();
                 action.setMessage(et.getText().toString());
                 action.setNumber(3012);
                 Navigation.findNavController(view).navigate(action);
