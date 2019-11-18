@@ -1,7 +1,7 @@
 package edu.cs4730.retrofit2livedatademo;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 
 /**
