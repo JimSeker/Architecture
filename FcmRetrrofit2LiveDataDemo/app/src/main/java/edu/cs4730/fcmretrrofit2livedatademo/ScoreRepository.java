@@ -95,9 +95,14 @@ public class ScoreRepository {
             if (tokens[0].compareTo("") != 0)
               myList.add(new Score(Long.valueOf(tokens[0]), tokens[1], Integer.valueOf(tokens[2])));
         }
+        //these are done wrong.  It should go through, update any there exists, add new, and delete the rest.
+        //and I'm cheating.
         //lastly and it must be on a thread
         Thread myThread = new Thread() {
             public void run() {
+                if (!myList.isEmpty()) {
+                    db.ScoreDao().deleteAllScores();
+                }
                 db.ScoreDao().insertAll(myList);
             }
         };
