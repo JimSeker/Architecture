@@ -3,7 +3,7 @@ package edu.cs4730.androidviewmodeldemo;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //get the modelview.
-        mViewModel = ViewModelProviders.of(this).get(myAndroidViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(myAndroidViewModel.class);
 
         //count fields.  Modelview doesn't have livedata here.  So everything is manual.
         tv_count = findViewById(R.id.textView);

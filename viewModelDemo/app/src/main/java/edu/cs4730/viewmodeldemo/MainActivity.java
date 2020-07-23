@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 /**
  * this is a simple example to show how the ViewModel class works and how to separate
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final DataViewModel mViewModel = ViewModelProviders.of(this).get(DataViewModel.class);
+        final DataViewModel mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
 
         logger = findViewById(R.id.logger);
 
