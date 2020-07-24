@@ -12,7 +12,7 @@ import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-/*
+/**
  * This is a simple example of how the room architecture to create a simple database.
  * It create a score Score  Plain Old Java Object (entity), a data access object (dao), and roomDatabase.
  *

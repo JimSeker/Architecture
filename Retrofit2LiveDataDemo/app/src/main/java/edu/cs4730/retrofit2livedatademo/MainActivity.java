@@ -1,6 +1,7 @@
 package edu.cs4730.retrofit2livedatademo;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         int userId = 1;
 
-        viewModel = ViewModelProviders.of(this).get(UserProfileViewModel.class);
+        viewModel = new ViewModelProvider(this).get(UserProfileViewModel.class);
         viewModel.setup(new UserRepository());
         viewModel.init(userId);
         viewModel.getUser().observe(this, new Observer<User>() {

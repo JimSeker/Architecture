@@ -1,6 +1,7 @@
 package edu.cs4730.livedatademo;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //get the modelview.
-        mViewModel = ViewModelProviders.of(this).get(DataViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
 
         logger = findViewById(R.id.logger);
         tv_count = findViewById(R.id.tv_count);

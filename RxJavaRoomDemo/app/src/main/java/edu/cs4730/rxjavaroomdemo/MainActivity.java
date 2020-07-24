@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Action;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         //I've no idea what the factory is for, but won't work without it.
         mViewModelFactory = Injection.provideViewModelFactory(this);
         //setup the pieces for the viewmodel, which the observable is setup in onStart.
-        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(ScoreViewModel.class);
+        mViewModel = new ViewModelProvider(this, mViewModelFactory).get(ScoreViewModel.class);
         mUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

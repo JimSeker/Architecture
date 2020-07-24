@@ -26,13 +26,13 @@ public class Fragment_bundle extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View myView= inflater.inflate(R.layout.fragment_bundle, container, false);
+        View myView = inflater.inflate(R.layout.fragment_bundle, container, false);
 
         TextView tv_passed = myView.findViewById(R.id.btv_passed);
         TextView tv_passed2 = myView.findViewById(R.id.btv_passed2);
 
         //via a bundle, instead of safe args
-        tv_passed.setText(getArguments().getString("message", "no data") );
+        tv_passed.setText(getArguments().getString("message", "no data"));
         String stuff = "Data 2 is " + getArguments().getInt("number", 1);
         tv_passed2.setText(stuff);
         return myView;
