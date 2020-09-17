@@ -4,11 +4,13 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,18 +20,18 @@ import android.widget.Toast;
 
 /**
  * Simple example of how to create a content provider with a room Database.
- *
+ * <p>
  * Note this example adds sample data in the initial load of the database, because of this, loaders or a thread is need
  * for the insert.  Normally we won't have a database create and insert together for a content provider, but needs of the example
- *
- *  The data is displayed in a listview with a cursor adapter.  We are using the loaders observer, instead of the roomDatabase observers.
- *
- *  Note, Loaders have been deprecated in API 28.  Supported to replace them with modelview and livedata.  set the observer on the cursor
- *  coming back via the content provider should work.
+ * <p>
+ * The data is displayed in a listview with a cursor adapter.  We are using the loaders observer, instead of the roomDatabase observers.
+ * <p>
+ * Note, Loaders have been deprecated in API 28.  Supported to replace them with modelview and livedata.  set the observer on the cursor
+ * coming back via the content provider should work.
  */
 
 public class MainActivity extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+    LoaderManager.LoaderCallbacks<Cursor> {
     String TAG = "MainActivity";
 
     private SimpleCursorAdapter dataAdapter;
@@ -47,28 +49,28 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
 
         //initialize the loader
-        getSupportLoaderManager().initLoader(TUTORIAL_LIST_LOADER, null, this);
+        LoaderManager.getInstance(this).initLoader(TUTORIAL_LIST_LOADER, null, this);
 
         // The desired columns to be bound
         String[] columns = new String[]{
-                Score.COLUMN_NAME,
-                Score.COLUMN_SCORE
+            Score.COLUMN_NAME,
+            Score.COLUMN_SCORE
         };
 
         // the XML defined views which the data will be bound to
         int[] to = new int[]{
-                R.id.name,
-                R.id.score
+            R.id.name,
+            R.id.score
         };
 
         // create the adapter using the cursor pointing to the desired data
         //as well as the layout information
         dataAdapter = new SimpleCursorAdapter(
-                this, R.layout.highscore,
-                null,   //cursor is filled in by the loaders.
-                columns,
-                to,
-                0);
+            this, R.layout.highscore,
+            null,   //cursor is filled in by the loaders.
+            columns,
+            to,
+            0);
 
         ListView listView = (ListView) findViewById(R.id.listView1);
         // Assign adapter to ListView
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements
         //setup the information we want for the contentprovider.
 
         CursorLoader cursorLoader = new CursorLoader(this,
-                CONTENT_URI, projection, null, null, SortOrder);
+            CONTENT_URI, projection, null, null, SortOrder);
         return cursorLoader;
     }
 

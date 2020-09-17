@@ -8,30 +8,30 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 
 public class myDBContentProvider extends ContentProvider {
 
-	/**
-	 *
-	 * We could use the Score RoomDatabase Plus need  to add stuff for the loader classes as well.
-	 *
+    /**
+     * We could use the Score RoomDatabase Plus need  to add stuff for the loader classes as well.
+     * <p>
      * This implementation is not complete, since some of the them throw errors, where we should
      * allow it to happen.  delete all and update all
-     *
-	 * Note there is only one table, so the provider only has score and score_id
-	 * If there were more tables publicly accessible, then we would need more names/numbers for
-	 * urimatcher.
-     *
+     * <p>
+     * Note there is only one table, so the provider only has score and score_id
+     * If there were more tables publicly accessible, then we would need more names/numbers for
+     * urimatcher.
+     * <p>
      * NOTE this example is ignoring the where cause/selection that is passed to the content provider
      * This is likely a very bad idea, but is allowed for the purpose of the example.
-	 */
+     */
 
     public static final String PROVIDER_NAME = "edu.cs4730.scoreroomprovider";
 
     public static final Uri CONTENT_URI =
-            Uri.parse("content://" + PROVIDER_NAME + "/score");
+        Uri.parse("content://" + PROVIDER_NAME + "/score");
 
     private static final int SCORE = 1;
     private static final int SCORE_ID = 2;
@@ -137,7 +137,7 @@ public class myDBContentProvider extends ContentProvider {
         }
 
         long rowId = AppDatabase.getInstance(context).ScoreDao()
-                .insert(Score.fromContentValues(values));
+            .insert(Score.fromContentValues(values));
         if (rowId > 0) {   //add the row id to the uri and return it to the user.
             Uri noteUri = ContentUris.withAppendedId(CONTENT_URI, rowId);
             //this line is added for the loaders.  We changed the database, so notify everyone.
@@ -168,12 +168,11 @@ public class myDBContentProvider extends ContentProvider {
         }
         final Score score = Score.fromContentValues(values);
         score.id = ContentUris.parseId(uri);
-        count =  AppDatabase.getInstance(context).ScoreDao().update(score);
+        count = AppDatabase.getInstance(context).ScoreDao().update(score);
         //this line is added for the loaders.  We changed the database, so notify everyone.
         getContext().getContentResolver().notifyChange(uri, null);
         return count;
     }
-
 
 
 }
