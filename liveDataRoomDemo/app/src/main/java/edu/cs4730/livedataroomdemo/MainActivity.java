@@ -24,9 +24,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    AppDatabase db;
     TextView logger;
     String TAG = "MainActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         logger = findViewById(R.id.logger);
 
-        AppDatabase ad = AppDatabase.getInstance(this);
+        final AppDatabase ad = AppDatabase.getInstance(this);
 
         ScoreListViewModel scoreListViewModel = new ScoreListViewModel(ad);
         scoreListViewModel.getScores().observe(this, new Observer<List<Score>>() {
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //simple logger function to both the debug and logger textview.
-    void logthis(String item) {
+    void logthis(final String item) {
         if (item != null && item.compareTo("") != 0) {
             Log.d(TAG, item);
             //We are likely not the main UI thread, so lets get there.

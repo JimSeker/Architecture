@@ -5,31 +5,34 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
+
 import java.util.List;
 
-/*
+/**
  * this adapter is very similar to the adapters used for listview, except a ViewHolder is required
  * see http://developer.android.com/training/improving-layouts/smooth-scrolling.html
  * except instead having to implement a ViewHolder, it is implemented within
  * the adapter.
- *
+ * <p>
  * This code has a ViewModel/LiveData and the observer is set in the adapter, so it will update on it's
  * own without the need to notify that the database has been changed.
  */
 
-public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
+public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
     private List<Score> myList;
     private int rowLayout;
     //private  AppCompatActivity activity;  only need it once.
-    private final String TAG= "myAdapter";
+    private final String TAG = "myAdapter";
     private ScoreListViewModel mViewModel;
 
     // Provide a reference to the views for each data item
@@ -40,7 +43,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
         public TextView mName;
         public TextView mScore;
 
-        private final String TAG= "ViewHolder";
+        private final String TAG = "ViewHolder";
+
         public ViewHolder(View view) {
             super(view);
             mName = view.findViewById(R.id.name);
@@ -53,12 +57,12 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>{
         mViewModel = scoreListViewModel;
         this.rowLayout = rowLayout;
         mViewModel.getScores().observe(activity, new Observer<List<Score>>() {
-                @Override
-                public void onChanged(@Nullable List<Score> scores) {
-                    Log.d("ntAdatper", "Data has been added/changed, displaying");
-                    myList = scores;
-                    notifyDataSetChanged();
-                }
+            @Override
+            public void onChanged(@Nullable List<Score> scores) {
+                Log.d("ntAdatper", "Data has been added/changed, displaying");
+                myList = scores;
+                notifyDataSetChanged();
+            }
         });
     }
 

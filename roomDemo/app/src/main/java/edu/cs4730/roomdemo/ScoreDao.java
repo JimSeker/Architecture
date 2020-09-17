@@ -19,9 +19,13 @@ public interface ScoreDao {
      *
      * @return A {@link List<Score>} of all the name and scores in the table.
      */
-    @Query("SELECT * FROM score")
+    @Query("SELECT * FROM " + Score.TABLE_NAME)
     List<Score> selectAll();
 
+    // get's all the entries with a specific score.
+
+    @Query("select * from " +Score.TABLE_NAME +" where " + Score.COLUMN_SCORE +" = :scoreValue")
+    List<Score> loadScore(int scoreValue);
 
     /**
      * Inserts a score into the table.  In a conflict (ie same data) replace it.
@@ -38,16 +42,13 @@ public interface ScoreDao {
     @Insert
     long insert(Score scoreData);
 
-    @Query("select * from score where score = :scoreValue")
-    List<Score> loadScore(int scoreValue);
-
     /**
      * Delete a score by the ID.
      *
      * @param id The row ID.
      * @return A number of socres deleted. This should always be {@code 1}.
      */
-    @Query("DELETE FROM score WHERE id = :id")
+    @Query("DELETE FROM " + Score.TABLE_NAME + " WHERE " + Score.COLUMN_ID + " = :id")
     int deleteById(long id);
 
     /**

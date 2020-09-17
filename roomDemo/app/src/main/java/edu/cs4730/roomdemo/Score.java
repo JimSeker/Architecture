@@ -1,5 +1,8 @@
 package edu.cs4730.roomdemo;
 
+import android.provider.BaseColumns;
+
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -9,21 +12,44 @@ import androidx.room.PrimaryKey;
  * constructors for the object.   The table in the database is not specified, so it will be score (the Class name)
  */
 
-@Entity
-
+@Entity(tableName = Score.TABLE_NAME)
 public class Score {
+    /**
+     * The name of the Score table.
+     */
+    public static final String TABLE_NAME = "scores";
+
+    /**
+     * The name of the ID column.
+     */
+    public static final String COLUMN_ID = BaseColumns._ID;
+
+    /**
+     * The name of the name column.
+     */
+    public static final String COLUMN_NAME = "name";
+
+    /**
+     * The name of the score column.
+     */
+    public static final String COLUMN_SCORE = "score";
+
     /**
      * The unique ID each score data pair.
      */
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(index = true, name = COLUMN_ID)
     public long id;
+
     /**
      * The name of the person.
      */
+    @ColumnInfo(name = COLUMN_NAME)
     public String name;
     /**
      * The person's score.
      */
+    @ColumnInfo(name = COLUMN_SCORE)
     public int score;
 
     /**

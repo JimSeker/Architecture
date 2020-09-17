@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     AppDatabase db;
     TextView logger;
     String TAG = "MainActivity";
-    protected Handler handler;
 
 
     @Override
@@ -34,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         logger = findViewById(R.id.logger);
 
-        //open(create) the database.
-        db = Room.databaseBuilder(getApplicationContext(),
-            AppDatabase.class, "database-name").build();
+        //get an instance of the database, which is a static method, that either just created it or opened.
+        db = AppDatabase.getInstance(this);
 
 
         findViewById(R.id.btn_display).setOnClickListener(new View.OnClickListener() {
