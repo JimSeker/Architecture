@@ -22,10 +22,10 @@ public class Score {
     public static final String COLUMN_ID = BaseColumns._ID;
 
     /** The name of the name column. */
-    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_NAME = "Name";
 
     /** The name of the score column. */
-    public static final String COLUMN_SCORE = "score";
+    public static final String COLUMN_SCORE = "Score";
 
     /** The unique ID of the score. */
     @PrimaryKey(autoGenerate = true)

@@ -17,8 +17,12 @@
             </intent-filter>
         </activity>
 
-        <provider android:name="myDBContentProvider"
-            android:authorities="edu.cs4730.scoreroomprovider" android:exported="true"/>
+        <provider
+            android:name="myDBContentProvider"
+            android:authorities="edu.cs4730.scoreroomprovider"
+            android:grantUriPermissions="true"
+            android:multiprocess="true"
+            android:exported="true" />
     </application>
 
 </manifest>
