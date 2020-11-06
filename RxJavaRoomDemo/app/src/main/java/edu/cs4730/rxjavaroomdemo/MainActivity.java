@@ -18,6 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  *
  * this example uses RxJava with the room database.
+ * https://github.com/ReactiveX/RxJava
  *
  * https://medium.com/google-developers/room-rxjava-acb0cd4f3757  helpful explanation.
  * this example is based off of https://github.com/googlesamples/android-architecture-components/tree/master/BasicRxJavaSample
