@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 /**
  * retrofit http://square.github.io/retrofit/
+ * https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit  for versions in module.
  *
  * auth https://stackoverflow.com/questions/43366164/retrofit-and-okhttp-basic-authentication
  *
