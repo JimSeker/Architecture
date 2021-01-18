@@ -2,9 +2,9 @@ package edu.cs4730.retrofit2livedatademo;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
         int userId = 1;
 
-        viewModel = new ViewModelProvider(this).get(UserProfileViewModel.class);
+        viewModel = new ViewModelProvider( this).get(UserProfileViewModel.class);
         viewModel.setup(new UserRepository());
         viewModel.init(userId);
-        viewModel.getUser().observe(this, new Observer<User>() {
+        viewModel.getUser().observe( this, new Observer<User>() {
             @Override
             public void onChanged(@Nullable User user) {
                 //update the ui!
