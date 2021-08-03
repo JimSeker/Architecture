@@ -11,7 +11,7 @@ They are the room database and liveData update pieces.
 MyFirebaseInsanceIDservice, myFirbaseMessageingService and the sendToken method in Mainactivity are for the Firebase Cloud messaging, which is the backend.  The app registers it's
  firebase token with the rest service, so that can notify it when there are updates.
  * sharedPrefManager class holds the firebase token.
- * With the Oreo restrictions there is MyJobService as well, but it's not working.   Instead I'm ignore it and using the service, since it is allowed to run without restrictions when the app is running.
+ * MyJobService has been replaced with a worker class.  It's a dummy worker and really don't do anything, but gives you the idea of what can be done.
  * the messaging serivce that updates the room database with the new data and the liveData obersver in MainActivity will then update the data on the "front end"
  * endpoints class is just the constants for where the rest service it.  Which is a local private webserver.  You will need to get the php code and create your own server.
  

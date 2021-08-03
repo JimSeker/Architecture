@@ -3,13 +3,18 @@ package edu.cs4730.fcmretrrofit2livedatademo;
 
 import android.util.Log;
 
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
-import com.firebase.jobdispatcher.Trigger;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.concurrent.TimeUnit;
+
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * This class is where the push message will go.  onMessageReceived is called this should launch the jobservice, but it's not working very well.
@@ -73,21 +78,34 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     /**
-     * Schedule a job using FirebaseJobDispatcher.     so if longer then 10 seconds, schedule the job.
+     * Schedule a job using Worker     so if longer then 10 seconds, schedule the job.
      */
-    private void scheduleJob() {
-        // [START dispatch_job]
-        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
-        Job myJob = dispatcher.newJobBuilder()
-            .setService(MyJobService.class)
-            .setTag("my-job-tag")
-            .setTrigger(Trigger.executionWindow(
-                2,
-                10
-            ))
-            .build();
-        dispatcher.schedule(myJob);
-        // [END dispatch_job]
-    }
 
+    private void scheduleJob() {
+
+        Data inputData = new Data.Builder()
+            .putString("some_key", "some_value")
+            .build();
+        Constraints constraints = new Constraints.Builder()
+            // The Worker needs Network connectivity
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            // Needs the device to be charging
+            .setRequiresCharging(true)
+            .build();
+
+        OneTimeWorkRequest request =
+            // Tell which work to execute
+            new OneTimeWorkRequest.Builder(myWorker.class)
+                // Sets the input data for the ListenableWorker
+                .setInputData(inputData)
+                // If you want to delay the start of work by 60 seconds
+                .setInitialDelay(60, TimeUnit.SECONDS)
+                // Set additional constraints
+                .setConstraints(constraints)
+                .build();
+        //start up the work request finally.
+        WorkManager.getInstance(getApplicationContext())
+            .enqueueUniqueWork("my-unique-name", ExistingWorkPolicy.KEEP, request);
+
+    }
 }
