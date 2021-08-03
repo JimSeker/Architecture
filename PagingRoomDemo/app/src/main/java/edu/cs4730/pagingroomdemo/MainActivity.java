@@ -1,7 +1,8 @@
 package edu.cs4730.pagingroomdemo;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+
+import androidx.lifecycle.ViewModelProvider;
 import androidx.paging.PagedList;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = ViewModelProviders.of(this).get(myViewModel.class);
+        viewModel = new ViewModelProvider(this).get(myViewModel.class);
 
         RecyclerView mRecyclerView = findViewById(R.id.list);
         // use this setting to improve performance if you know that changes
