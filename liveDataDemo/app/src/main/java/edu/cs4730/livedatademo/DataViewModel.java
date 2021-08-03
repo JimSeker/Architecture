@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel;
 
 public class DataViewModel extends ViewModel {
 
-    private MutableLiveData<dataObj> data;
+    private MutableLiveData<dataObj> data;  // =  new MutableLiveData<dataObj>() ;
 
     public LiveData<dataObj> getData() {
         if (data == null) {
