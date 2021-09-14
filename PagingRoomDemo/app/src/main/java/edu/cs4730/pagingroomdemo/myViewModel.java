@@ -10,6 +10,9 @@ import androidx.paging.PagedList;
  * which be used in the recyclerview.
  * <p>
  * Lastly, don't listen the lent, this class must be public or it dies.
+ *
+ * page v3.x has rewritten almost everything and so most of this class is now depreciated and needs a rewrite.
+ *
  */
 
 public class myViewModel extends ViewModel {

@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "edu.cs4730.pagingroomdemo"
         minSdkVersion 26
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }
@@ -26,7 +26,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.3.1"
     implementation "androidx.lifecycle:lifecycle-livedata:2.3.1"
     implementation "androidx.lifecycle:lifecycle-runtime:2.3.1"
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.3.1"
+    //annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.3.1"
     implementation "androidx.paging:paging-runtime:3.0.1"
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
