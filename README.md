@@ -19,7 +19,7 @@ Android Architecture examples
 
 `LiveDataRoomRecyclerDemo` shows a room database with livedata/modelview that auto updates a recyclerview (using an observer in the adapter) as the data changes.
 
-`ContentProviderRoomDemo` shows how to create a contentprovider around a room database.  It's based on sqliteDemo in the https://github.com/JimSeker/saveData 
+`ContentProviderRoomDemo` shows how to create a contentprovider around a room database.  It's based on [sqliteDemo in saveData Repo](https://github.com/JimSeker/saveData)
 
 `PagingRoomDemo` is an example using the page library to slowly load the data from a room database into a recyclerview, using PageList, PagedListAdaepter, and LivePagedListProvider (in the RoomDatabase).
 
