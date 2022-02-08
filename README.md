@@ -27,7 +27,7 @@ Android Architecture examples
 
 ---
 
-**Other Architecture examples: **
+**Other Architecture examples:**
 
 `retrofit2Demo` is a very simple example using the retrofit2 ReST API and JSON, instead of httpURLconnection.  
 
