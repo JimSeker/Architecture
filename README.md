@@ -1,33 +1,43 @@
 Android Architecture examples
 ===========
 
-<b>viewModelDemo</b> is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
+**ViewModel Examples:**
 
-<b>AndroidviewModelDemo</b> is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
+`viewModelDemo` is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
 
-<b>liveDataDemo</b>  is a simple demo of how to wrap LiveData classes with a the viewModel object to display data as it changes.
+`AndroidviewModelDemo` is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
 
-<b>roomDemo</b> is an example of use the new room objects to create and access a database.
+`liveDataDemo`  is a simple demo of how to wrap LiveData classes with a the viewModel object to display data as it changes.
 
-<b>LiveDataRoomDemo</b> shows how to use the liveData object with the database to have the display updated when new data is added.
+---
 
-<b>LiveDataRoomRecyclerDemo</b> shows a room database with livedata/modelview that auto updates a recyclerview (using an observer in the adapter) as the data changes.
+**Room Examples:**
 
-<b>ContentProviderRoomDemo</b> shows how to create a contentprovider around a room database.  It's based on sqliteDemo in the https://github.com/JimSeker/saveData 
+`roomDemo` is an example of use the new room objects to create and access a database.
 
-<b>PagingRoomDemo</b> is an example using the page library to slowly load the data froma room database into a recyclerview, using PageList, PagedListAdaepter, and LivePagedListProvider (in the RoomDatabase).
+`LiveDataRoomDemo` shows how to use the liveData object with the database to have the display updated when new data is added.
 
-<b>retrofit2Demo</b> is a very simple example using the retrofit2 ReST API and JSON, instead of httpURLconnection.  
+`LiveDataRoomRecyclerDemo` shows a room database with livedata/modelview that auto updates a recyclerview (using an observer in the adapter) as the data changes.
 
-<b>Retrofit2LiveDataDemo</b> is a basic attempt at google's user example (on their web pages) using retrofit2 and LiveData.   This example is still pretty rough, but it does work.
-It uses a private ReST server.  the php backend will be added later on.  This doesn't use JSON, instead the ReST is a basic CSV.
+`ContentProviderRoomDemo` shows how to create a contentprovider around a room database.  It's based on sqliteDemo in the https://github.com/JimSeker/saveData 
 
-<b>RxJavaRoomDemo</b> is an example of using the Flow in RxJava and room to display data as it changes.  Similiar to LiveData.
+`PagingRoomDemo` is an example using the page library to slowly load the data from a room database into a recyclerview, using PageList, PagedListAdaepter, and LivePagedListProvider (in the RoomDatabase).
 
-<b>FcmRetrrofit2LiveDemo</b> is a complex example using many of the examples above that uses a local room database to hold the cache data and receive push 
-updates when the data on the rest service is update.  It uses firebase messaging as well.
+`RxJavaRoomDemo` is an example of using the Flow in RxJava and room to display data as it changes.  Similiar to LiveData.
 
-<b>WorkManagerDemo</b> is an example of using the Architecture Worker Tasks.  This example is in located in https://github.com/JimSeker/service repo.
+---
+
+**Other Architecture examples: **
+
+`retrofit2Demo` is a very simple example using the retrofit2 ReST API and JSON, instead of httpURLconnection.  
+
+`Retrofit2LiveDataDemo` is a basic attempt at google's user example (on their web pages) using retrofit2 and LiveData.   This example is still pretty rough, but it does work.  It uses a private ReST server.  the php backend will be added later on.  This doesn't use JSON, instead the ReST is a basic CSV.
+
+`FcmRetrrofit2LiveDemo` is a complex example using many of the examples above that uses a local room database to hold the cache data and receive push updates when the data on the rest service is update.  It uses firebase messaging as well.
+
+`WorkManagerDemo` is an example of using the Architecture Worker Tasks.  This example is in located in https://github.com/JimSeker/service repo.
+
+---
 
 These may also be helpful links 
 https://medium.com/google-developers/viewmodels-a-simple-example-ed5ac416317e<BR>
@@ -36,9 +46,11 @@ https://medium.com/@taman.neupane/basic-example-of-livedata-and-viewmodel-14d5af
 https://medium.com/google-developers/lifecycle-aware-data-loading-with-android-architecture-components-f95484159de4<BR>
 https://medium.com/@iammert/offline-app-with-rxjava-2-and-room-ccd0b5c18101  good example, uses older library.<BR>
 https://developer.android.com/reference/android/arch/lifecycle/LiveDataReactiveStreams.html<BR>
-https://android.jlelse.eu/android-reactive-architecture-part-1-introduction-60466bc88774  (kotlin, not java!)<BR>
+https://android.jlelse.eu/android-reactive-architecture-part-1-introduction-60466bc88774  (kotlin)<BR>
 https://developer.android.com/topic/libraries/architecture/guide.html  (able halfway down the page), doesn't work ,but some explanations. <BR>
 https://github.com/googlesamples/android-architecture-components/tree/master/BasicRxJavaSample  is Google's example for it, poorly documented and almost no comments.<BR>
+
+---
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
 All examples are for Android.
