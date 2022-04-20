@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
     defaultConfig {
         applicationId "edu.cs4730.fcmretrrofit2livedatademo"
         minSdkVersion 26
-        targetSdkVersion 30   //workmanager doesn't work in 31 currently.
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -27,20 +27,20 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     //firebase messages stuff.
-    implementation 'com.google.firebase:firebase-core:20.0.2'
-    implementation 'com.google.firebase:firebase-messaging:23.0.0'
+    implementation 'com.google.firebase:firebase-core:20.1.2'
+    implementation 'com.google.firebase:firebase-messaging:23.0.3'
     //replaces the jobservice with a worker instead,  jobservice is depreciated.
     implementation "androidx.work:work-runtime:2.7.1"
     implementation 'com.android.volley:volley:1.2.1'
     //room etc stuff.
-    implementation "androidx.room:room-runtime:2.4.1"
-    annotationProcessor "androidx.room:room-compiler:2.4.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.4.0"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.4.0"
-    implementation "androidx.lifecycle:lifecycle-runtime:2.4.0"
+    implementation "androidx.room:room-runtime:2.4.2"
+    annotationProcessor "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.4.1"
+    //implementation "androidx.lifecycle:lifecycle-runtime:2.4.1"
     //annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.1.0"
     // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
 
     //retrofit for rest api calls.
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
