@@ -69,8 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
+    
     /*`
      * simple method to add the log TextView.
      */

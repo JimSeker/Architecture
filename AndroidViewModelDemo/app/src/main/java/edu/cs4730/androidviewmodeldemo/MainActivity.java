@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Very simple example of using a android view model.
+ */
+
 public class MainActivity extends AppCompatActivity {
     myAndroidViewModel mViewModel;
     EditText et_name;
