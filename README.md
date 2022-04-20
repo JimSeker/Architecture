@@ -1,6 +1,8 @@
 Android Architecture examples
 ===========
 
+`legacy/` Examples are no longer updated and likely deprecated. 
+
 **ViewModel Examples:**
 
 `viewModelDemo` is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
@@ -20,8 +22,6 @@ Android Architecture examples
 `LiveDataRoomRecyclerDemo` shows a room database with livedata/modelview that auto updates a recyclerview (using an observer in the adapter) as the data changes.
 
 `ContentProviderRoomDemo` shows how to create a contentprovider around a room database.  It's based on [sqliteDemo in saveData Repo](https://github.com/JimSeker/saveData)
-
-`PagingRoomDemo` is an example using the page library to slowly load the data from a room database into a recyclerview, using PageList, PagedListAdaepter, and LivePagedListProvider (in the RoomDatabase).
 
 `RxJavaRoomDemo` is an example of using the Flow in RxJava and room to display data as it changes.  Similiar to LiveData.
 
