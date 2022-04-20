@@ -8,7 +8,6 @@ import android.content.ContentValues;
 import android.provider.BaseColumns;
 
 /**
- * S/**
  * Score  Plain Old Java Object  This needs to provide getters and setters for everything plus the
  * constructors for the object.   The table in the database is specified as scores
  */
