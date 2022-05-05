@@ -29,8 +29,6 @@ Android Architecture examples
 
 **Other Architecture examples:**
 
-`ArchNavigationDemo` is an example of using the Arch Navigation for fragments.  how to change fragments and pass data via arch.
-
 `retrofit2Demo` is a very simple example using the retrofit2 ReST API and JSON, instead of httpURLconnection.  
 
 `Retrofit2LiveDataDemo` is a basic attempt at google's user example (on their web pages) using retrofit2 and LiveData.   This example is still pretty rough, but it does work.  It uses a private ReST server.  the php backend will be added later on.  This doesn't use JSON, instead the ReST is a basic CSV.
