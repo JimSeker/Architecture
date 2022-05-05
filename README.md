@@ -23,11 +23,13 @@ Android Architecture examples
 
 `ContentProviderRoomDemo` shows how to create a contentprovider around a room database.  It's based on [sqliteDemo in saveData Repo](https://github.com/JimSeker/saveData)
 
-`RxJavaRoomDemo` is an example of using the Flow in RxJava and room to display data as it changes.  Similiar to LiveData.
+`RxJavaRoomDemo` is an example of using the Flow in RxJava and room to display data as it changes.  Similar to LiveData.
 
 ---
 
 **Other Architecture examples:**
+
+`ArchNavigationDemo` is an example of using the Arch Navigation for fragments.  how to change fragments and pass data via arch.
 
 `retrofit2Demo` is a very simple example using the retrofit2 ReST API and JSON, instead of httpURLconnection.  
 
