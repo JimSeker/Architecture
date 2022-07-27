@@ -1,40 +1,30 @@
-/*
- * Copyright 2017, The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package edu.cs4730.livedataroomdemo;
 
+import android.app.Application;
+import android.util.Log;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.ViewModel;
 import androidx.annotation.Nullable;
-
-/**
- * class to hold the data returned from the room database.  it has livedata, so observer is here and
- * pass back, I think.
- */
-
 import java.util.List;
 
-public class ScoreListViewModel extends ViewModel {
+/**
+ * class to hold the room database.  With the LiveData, you expose observers, so the application
+ * can update widgets as needed.
+ */
+
+public class ScoreListViewModel extends AndroidViewModel {
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<Score>> mObservableScores;
+    private final AppDatabase ad;
+    final private String TAG = "ViewModel";
 
-    public ScoreListViewModel(AppDatabase ad) {
+    public ScoreListViewModel(@Nullable Application application) {
+        super(application);
 
+        ad = AppDatabase.getInstance(application);
         mObservableScores = new MediatorLiveData<>();
         // set by default null, until we get data from the database.
         mObservableScores.setValue(null);
@@ -56,6 +46,16 @@ public class ScoreListViewModel extends ViewModel {
             }
 
         );
+    }
+
+    public void addData(List<Score> scores) {
+        Thread myThread = new Thread() {  //database additions can't be on the main thread.
+            public void run() {
+                Log.d(TAG, "Inserting data");
+                ad.ScoreDao().insertAll(scores);
+            }
+        };
+        myThread.start();
     }
 
     /**

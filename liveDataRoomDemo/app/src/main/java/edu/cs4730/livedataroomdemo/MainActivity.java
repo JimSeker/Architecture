@@ -3,6 +3,7 @@ package edu.cs4730.livedataroomdemo;
 import androidx.lifecycle.Observer;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,14 +20,16 @@ import java.util.List;
  * When data is changed or add the liveData is notified and will display the data via the observer, so
  * there is no "display button", since it's not needed.
  * <p>
- * In MainActivity it opens the database
+ * The traditional class that holds all the database callslike the query, inserts, etc, is replaced
+ * with a viewmodel with observers.  so the data can be updated in the widgets as the db changes.
+ *
  */
 
 public class MainActivity extends AppCompatActivity {
 
     TextView logger;
     String TAG = "MainActivity";
-
+    ScoreListViewModel scoreListViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         logger = findViewById(R.id.logger);
 
-        final AppDatabase ad = AppDatabase.getInstance(this);
+        //setup the viewmodel and the database (inside the view model)
+        scoreListViewModel = new ViewModelProvider(this).get(ScoreListViewModel.class);
 
-        ScoreListViewModel scoreListViewModel = new ScoreListViewModel(ad);
         scoreListViewModel.getScores().observe(this, new Observer<List<Score>>() {
             @Override
             public void onChanged(@Nullable List<Score> scores) {
@@ -56,17 +59,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread myThread = new Thread() {
-                    public void run() {
-                        logthis("Inserting data");
-                        ad.ScoreDao().insertAll(generateScores());
-                    }
-                };
-                myThread.start();
+                scoreListViewModel.addData(generateScores());
             }
         });
     }
-
 
     //this just generates some simple data to be inserted into the database.
     public List<Score> generateScores() {

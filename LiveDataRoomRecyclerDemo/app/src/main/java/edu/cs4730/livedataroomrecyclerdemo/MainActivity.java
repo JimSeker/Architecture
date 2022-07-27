@@ -3,13 +3,12 @@ package edu.cs4730.livedataroomrecyclerdemo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.lifecycle.Observer;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,12 +17,19 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * shows how to use the room database with the AndroidViewModel
+ * The viewmodel is the POJO that would normally be the database class with all the function.
+ * in this case, just an add method.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     myAdapter mAdapter;
     String TAG = "MainActivity";
-    AppDatabase ad;
+    ScoreListViewModel scoreListViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,28 +38,22 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //setup the viewmodel and the database (inside the view model)
+        scoreListViewModel = new ViewModelProvider(this).get(ScoreListViewModel.class);
+
+        //set the floating action button up.
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Snackbar.make(view, "Adding data now", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+                scoreListViewModel.addData(generateScores());
 
-                Thread myThread = new Thread() {
-                    public void run() {
-                        Log.d(TAG, "Inserting data");
-                        ad.ScoreDao().insertAll(generateScores());
-                    }
-                };
-                myThread.start();
             }
         });
 
-        //get the database and a view model.
-        ad = AppDatabase.getInstance(this);
-        ScoreListViewModel scoreListViewModel = new ScoreListViewModel(ad);
-
+        //set the recyclerview.
         mRecyclerView = findViewById(R.id.listtrans);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new myAdapter(scoreListViewModel, R.layout.highscore, this);
         //add the adapter to the recyclerview
         mRecyclerView.setAdapter(mAdapter);
-
 
         //completely unnecessary, just using it to make sure everything is really working
         scoreListViewModel.getScores().observe(this, new Observer<List<Score>>() {
