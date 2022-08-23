@@ -7,13 +7,15 @@ Android Architecture examples
 
 `viewModelDemo` (java) is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
 
-`viewModelDemo_kt` (Kotlin) is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
+`viewModelDemo_kt` (kotlin) is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
 
-`AndroidviewModelDemo` (Java) is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
+`AndroidviewModelDemo` (java) is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
 
-`AndroidviewModelDemo_kt` (Kotlin) is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
+`AndroidviewModelDemo_kt` (kotlin) is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
 
-`liveDataDemo`  is a simple demo of how to wrap LiveData classes with a the viewModel object to display data as it changes.
+`liveDataDemo`  (java) is a simple demo of how to wrap LiveData classes with a the viewModel object to display data as it changes.
+
+`liveDataDemo_kt` (kotlin) is a simple demo of how to wrap LiveData classes with a the viewModel object to display data as it changes.
 
 ---
 

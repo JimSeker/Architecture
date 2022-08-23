@@ -24,7 +24,6 @@ public class DataViewModel extends ViewModel {
 
 
     String getCount() {
-
         return String.valueOf(count.getValue());
     }
 
