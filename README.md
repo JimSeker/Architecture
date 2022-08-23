@@ -21,7 +21,10 @@ Android Architecture examples
 
 **Room Examples:**
 
-`roomDemo` is an example of use the new room objects to create and access a database.
+`roomDemo` (java) is an example of use the new room objects to create and access a database.
+
+`roomDemo_kt` (kotlin) is an example of use the new room objects to create and access a database.
+
 
 `LiveDataRoomDemo` shows how to use the liveData object with the database to have the display updated when new data is added.
 
