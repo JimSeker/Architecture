@@ -1,7 +1,6 @@
 package edu.cs4730.roomdemo;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -10,14 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+
 
 /**
  * This is a simple example of how the room architecture to create a simple database.
  * It create a score Score  Plain Old Java Object (entity), a data access object (dao), and roomDatabase.
- *
+ * <p>
  * In MainActivity it opens the database, then in threads data can be added and displayed.
- *
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         //get an instance of the database, which is a static method, that either just created it or opened.
         db = AppDatabase.getInstance(this);
-
 
         findViewById(R.id.btn_display).setOnClickListener(new View.OnClickListener() {
             @Override
