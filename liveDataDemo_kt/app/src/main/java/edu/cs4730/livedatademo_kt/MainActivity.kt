@@ -1,4 +1,4 @@
-package edu.esp.livedatademo_kt
+package edu.cs4730.livedatademo_kt
 
 import android.os.Bundle
 import android.text.Editable

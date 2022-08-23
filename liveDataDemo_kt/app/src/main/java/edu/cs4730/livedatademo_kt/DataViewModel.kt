@@ -1,4 +1,4 @@
-package edu.esp.livedatademo_kt
+package edu.cs4730.livedatademo_kt
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.MutableLiveData

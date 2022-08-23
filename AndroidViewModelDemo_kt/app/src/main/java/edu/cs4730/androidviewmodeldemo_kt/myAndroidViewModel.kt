@@ -1,4 +1,4 @@
-package edu.esp.androidviewmodeldemo_kt
+package edu.cs4730.androidviewmodeldemo_kt
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

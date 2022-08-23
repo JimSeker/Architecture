@@ -1,4 +1,4 @@
-package edu.esp.androidviewmodeldemo_kt
+package edu.cs4730.androidviewmodeldemo_kt
 
 import android.annotation.SuppressLint
 import android.os.Bundle

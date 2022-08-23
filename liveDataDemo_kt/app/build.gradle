@@ -7,7 +7,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "edu.esp.livedatademo_kt"
+        applicationId "edu.cs4730.livedatademo_kt"
         minSdk 26
         targetSdk 33
         versionCode 1
