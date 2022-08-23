@@ -7,7 +7,9 @@ Android Architecture examples
 
 `viewModelDemo` is an example of how to use the viewModel class.  Also shows viewModel can survive a rotation.
 
-`AndroidviewModelDemo` is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
+`AndroidviewModelDemo` (Java) is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
+
+`AndroidviewModelDemo_kt` (Kotlin) is an example of how to use the AndroidviewModel class, which is just a viewModel that can get context.
 
 `liveDataDemo`  is a simple demo of how to wrap LiveData classes with a the viewModel object to display data as it changes.
 
@@ -19,7 +21,7 @@ Android Architecture examples
 
 `LiveDataRoomDemo` shows how to use the liveData object with the database to have the display updated when new data is added.
 
-`LiveDataRoomRecyclerDemo` shows a room database with livedata/modelview that auto updates a recyclerview (using an observer in the adapter) as the data changes.
+`LiveDataRoomRecyclerDemo` shows a room database with livedata/viewModel that auto updates a recyclerview (using an observer in the adapter) as the data changes.
 
 `ContentProviderRoomDemo` shows how to create a contentprovider around a room database.  It's based on [sqliteDemo in saveData Repo](https://github.com/JimSeker/saveData)
 
