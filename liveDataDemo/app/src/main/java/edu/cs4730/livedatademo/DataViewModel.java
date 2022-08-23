@@ -10,35 +10,37 @@ import androidx.lifecycle.ViewModel;
 
 public class DataViewModel extends ViewModel {
 
-    private MutableLiveData<dataObj> data;  // =  new MutableLiveData<dataObj>() ;
+    MutableLiveData<Integer> count = new MutableLiveData<Integer>(0);
+    MutableLiveData<String> name = new MutableLiveData<String>("");
 
-    public LiveData<dataObj> getData() {
-        if (data == null) {
-            data = new MutableLiveData<dataObj>();
-            data.setValue(new dataObj());
-        }
-        return data;
+
+    public LiveData<Integer> getDataCount() {
+        return count;
     }
+
+    public LiveData<String> getDataName() {
+        return name;
+    }
+
 
     String getCount() {
 
-        return String.valueOf(data.getValue().getCount());
+        return String.valueOf(count.getValue());
     }
 
     String getName() {
-        return data.getValue().name;
+        return name.getValue();
     }
 
     void incrementCount() {
-        dataObj d = data.getValue();
-        d.count++;
-        data.setValue(d);  //must use the setValue otherwise the observer will not be triggered!!!!
+
+        int c = count.getValue();
+        c++;
+        count.setValue(c);  //must use the setValue otherwise the observer will not be triggered!!!!
     }
 
     void setName(String item) {
-        dataObj d = data.getValue();
-        d.name = item;
-        data.setValue(d);
+        name.setValue(item);
     }
 
 }

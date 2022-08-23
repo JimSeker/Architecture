@@ -63,18 +63,23 @@ public class MainActivity extends AppCompatActivity {
         et_name = findViewById(R.id.et_name);
         et_name.addTextChangedListener(mlistener);
 
-        //set the observer for when the data changes.  It will then update.
+        //set the observers for when the data changes.  It will then update.
         //Note, when the phone rotates, this will be called, because the data is new to the activity.
-        mViewModel.getData().observe(this, new Observer<dataObj>() {
+        mViewModel.getDataName().observe(this, new Observer<String>() {
             @Override
-            public void onChanged(@Nullable dataObj data) {
-                logthis("Data changed, updating!");
+            public void onChanged(String s) {
                 et_name.removeTextChangedListener(mlistener);  //if not, then this will loop infinitely.
-                et_name.setText(data.name);
+                et_name.setText(s);
                 et_name.addTextChangedListener(mlistener);
-                tv_count.setText(data.getCount());
             }
         });
+        mViewModel.getDataCount().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                tv_count.setText(String.valueOf(integer) );
+            }
+        });
+
         addcount = findViewById(R.id.btn_add_count);
 
         //change the count.
