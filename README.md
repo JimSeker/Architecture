@@ -25,8 +25,9 @@ Android Architecture examples
 
 `roomDemo_kt` (kotlin) is an example of use the new room objects to create and access a database.
 
+`LiveDataRoomDemo` (java) shows how to use the liveData object with the database to have the display updated when new data is added.
 
-`LiveDataRoomDemo` shows how to use the liveData object with the database to have the display updated when new data is added.
+`LiveDataRoomDemo_kt` (kotlin) shows how to use the liveData object with the database to have the display updated when new data is added.
 
 `LiveDataRoomRecyclerDemo` shows a room database with livedata/viewModel that auto updates a recyclerview (using an observer in the adapter) as the data changes.
 
