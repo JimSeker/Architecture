@@ -2,10 +2,7 @@ package edu.cosc4730.roomdemo_kt
 
 import android.content.Context
 import androidx.room.Database
-import edu.cosc4730.roomdemo_kt.Score
 import androidx.room.RoomDatabase
-import edu.cosc4730.roomdemo_kt.ScoreDao
-import edu.cosc4730.roomdemo_kt.AppDatabase
 import androidx.room.Room
 
 /**
@@ -19,9 +16,10 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         private lateinit var db: AppDatabase
         const val DATABASE_NAME = "database-name.db"
+
+        @JvmStatic  //required in order to work.  kotlin doesn't like static, but it's required from java.
         fun getInstance(context: Context): AppDatabase {
             db = Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME).build()
-
             return db
         }
     }
