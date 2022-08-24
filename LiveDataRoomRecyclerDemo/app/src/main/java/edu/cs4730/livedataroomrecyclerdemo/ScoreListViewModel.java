@@ -23,7 +23,7 @@ public class ScoreListViewModel extends AndroidViewModel {
     private final AppDatabase ad;
     final private String TAG = "ViewModel";
 
-    public ScoreListViewModel(@NonNull Application application) {
+    public ScoreListViewModel(Application application) {
         super(application);
         ad = AppDatabase.getInstance(application);
         mObservableScores = new MediatorLiveData<>();
