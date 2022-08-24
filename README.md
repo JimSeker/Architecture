@@ -29,7 +29,9 @@ Android Architecture examples
 
 `LiveDataRoomDemo_kt` (kotlin) shows how to use the liveData object with the database to have the display updated when new data is added.
 
-`LiveDataRoomRecyclerDemo` shows a room database with livedata/viewModel that auto updates a recyclerview (using an observer in the adapter) as the data changes.
+`LiveDataRoomRecyclerDemo` (java) shows a room database with livedata/viewModel that auto updates a recyclerview (using an observer in the adapter) as the data changes.
+
+`LiveDataRoomRecyclerDemo_kt` (kotlin) shows a room database with livedata/viewModel that auto updates a recyclerview (using an observer in the adapter) as the data changes.
 
 `ContentProviderRoomDemo` shows how to create a contentprovider around a room database.  It's based on [sqliteDemo in saveData Repo](https://github.com/JimSeker/saveData)
 
@@ -41,7 +43,7 @@ Android Architecture examples
 
 `retrofit2Demo` is a very simple example using the retrofit2 ReST API and JSON, instead of httpURLconnection.  
 
-`Retrofit2LiveDataDemo` is a basic attempt at google's user example (on their web pages) using retrofit2 and LiveData.   This example is still pretty rough, but it does work.  It uses a private ReST server.  the php backend will be added later on.  This doesn't use JSON, instead the ReST is a basic CSV.
+`Retrofit2LiveDataDemo` is a basic attempt at Google's user example (on their web pages) using retrofit2 and LiveData.   This example is still pretty rough, but it does work.  It uses a private ReST server.  the php backend will be added later on.  This doesn't use JSON, instead the ReST is a basic CSV.
 
 `FcmRetrrofit2LiveDemo` is a complex example using many of the examples above that uses a local room database to hold the cache data and receive push updates when the data on the rest service is update.  It uses firebase messaging as well.
 
