@@ -16,8 +16,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Controller implements Callback<List<Change>> {
 
     static final String BASE_URL = "https://git.eclipse.org/r/";
+    DataViewModel mViewModel;
 
-    public void start() {
+    public void start(DataViewModel dvm) {
+        mViewModel = dvm;
+
         Gson gson = new GsonBuilder()
             .setLenient()
             .create();
@@ -38,10 +41,13 @@ public class Controller implements Callback<List<Change>> {
     public void onResponse(Call<List<Change>> call, Response<List<Change>> response) {
         if (response.isSuccessful()) {
             List<Change> changesList = response.body();
-            for (Change stuff : changesList)
-               Log.d("HI", stuff.getSubject());
+            for (Change stuff : changesList) {
+                mViewModel.addData(stuff.getSubject());
+                Log.d("Controller", stuff.getSubject());
+            }
         } else {
             System.out.println(response.errorBody());
+            mViewModel.addData(response.errorBody().toString());
         }
     }
 
