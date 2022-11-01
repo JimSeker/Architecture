@@ -39,6 +39,9 @@ import android.widget.Toast;
  * It should stated, this is not a full app, just a demo of how the pieces can work.
  *
  * Note the ProgressDialog was deprecated in API 26.  This will need to be fixed at some point.
+ *
+ * also the update to gradle 7.3.X breaks this code.  no changes are made, just an update to gradle.  I had to back it down via git and
+ * it compiles and runs.  no clue what that is is about.
  */
 
 public class MainActivity extends AppCompatActivity {
