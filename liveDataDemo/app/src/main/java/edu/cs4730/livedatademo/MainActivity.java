@@ -9,9 +9,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import edu.cs4730.livedatademo.databinding.ActivityMainBinding;
 
 /**
  * a simple example of using liveData.
@@ -24,9 +23,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText et_name;
-    TextView logger, tv_count;
-    Button addcount;
+    ActivityMainBinding binding;
     DataViewModel mViewModel;
 
     //this is a terrible way to do this, since the text change triggers the observer to update
@@ -53,36 +50,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         //get the modelview.
         mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
 
-        logger = findViewById(R.id.logger);
-        tv_count = findViewById(R.id.tv_count);
-        et_name = findViewById(R.id.et_name);
-        et_name.addTextChangedListener(mlistener);
+        binding.etName.addTextChangedListener(mlistener);
 
         //set the observers for when the data changes.  It will then update.
         //Note, when the phone rotates, this will be called, because the data is new to the activity.
         mViewModel.getDataName().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                et_name.removeTextChangedListener(mlistener);  //if not, then this will loop infinitely.
-                et_name.setText(s);
-                et_name.addTextChangedListener(mlistener);
+                binding.etName.removeTextChangedListener(mlistener);  //if not, then this will loop infinitely.
+                binding.etName.setText(s);
+                binding.etName.addTextChangedListener(mlistener);
             }
         });
         mViewModel.getDataCount().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                tv_count.setText(String.valueOf(integer) );
+                binding.tvCount.setText(String.valueOf(integer) );
             }
         });
 
-        addcount = findViewById(R.id.btn_add_count);
-
         //change the count.
-        addcount.setOnClickListener(new View.OnClickListener() {
+        binding.btnAddCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logthis("using data from the modelview");
@@ -97,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void logthis(String newinfo) {
         if (newinfo.compareTo("") != 0) {
-            logger.append(newinfo + "\n");
+            binding.logger.append(newinfo + "\n");
             Log.wtf("mainActivity", newinfo);
         }
     }
