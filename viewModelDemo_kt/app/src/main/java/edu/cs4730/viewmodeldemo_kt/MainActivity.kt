@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import edu.cs4730.viewmodeldemo_kt.databinding.ActivityMainBinding
 
 /**
  * this is a simple example to show how the ViewModel class works and how to separate
@@ -17,23 +18,21 @@ import androidx.lifecycle.ViewModelProvider
  * so it doesn't need to be reloaded or stored in preference bundle.
  */
 class MainActivity : AppCompatActivity() {
-    lateinit var et_name: EditText
-    lateinit var logger: TextView
-    lateinit var tv_count: TextView
-    lateinit var addcount: Button
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val mViewModel = ViewModelProvider(this)[DataViewModel::class.java]
-        logger = findViewById(R.id.logger)
-        tv_count = findViewById(R.id.tv_count)
+
         //comment out, click the button a couple of times and then rotate phone.  should reset to zero.
         //then return to see it work.
-        //tv_count.setText(mViewModel.getCount());
-        et_name = findViewById(R.id.et_name)
-        et_name.setText(mViewModel.name)
-        et_name.addTextChangedListener(object : TextWatcher {
+        //binding.tvCount.setText(mViewModel.getCount());
+
+        binding.etName.setText(mViewModel.name)
+        binding.etName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                 //ignore
             }
@@ -47,11 +46,11 @@ class MainActivity : AppCompatActivity() {
                 //ignore
             }
         })
-        addcount = findViewById(R.id.btn_add_count)
-        addcount.setOnClickListener {
+
+        binding.btnAddCount.setOnClickListener {
             logthis("using data from the modelview")
             mViewModel.incrementCount()
-            tv_count.text = mViewModel.getCount()
+            binding.tvCount.text = mViewModel.getCount()
         }
     }
 
@@ -60,7 +59,7 @@ class MainActivity : AppCompatActivity() {
      */
     fun logthis(newinfo: String) {
         if (newinfo.compareTo("") != 0) {
-            logger.append(newinfo + "\n")
+            binding.logger.append(newinfo + "\n")
         }
     }
 }

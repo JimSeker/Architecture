@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import edu.cs4730.viewmodeldemo.databinding.ActivityMainBinding;
+
 /**
  * this is a simple example to show how the ViewModel class works and how to separate
  * the data (ie model) from the UI (view/controller of the MVC) as well.
@@ -21,26 +23,22 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText et_name;
-    TextView logger, tv_count;
-    Button addcount;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         final DataViewModel mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
 
-        logger = findViewById(R.id.logger);
-
-        tv_count = findViewById(R.id.tv_count);
         //comment out, click the button a couple of times and then rotate phone.  should reset to zero.
         //then return to see it work.
-        //tv_count.setText(mViewModel.getCount());
+        //binding.tvCount.setText(mViewModel.getCount());
 
-        et_name = findViewById(R.id.et_name);
-        et_name.setText(mViewModel.name);
-        et_name.addTextChangedListener(new TextWatcher() {
+        binding.etName.setText(mViewModel.name);
+        binding.etName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 //ignore
@@ -58,24 +56,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addcount = findViewById(R.id.btn_add_count);
-        addcount.setOnClickListener(new View.OnClickListener() {
+        binding.btnAddCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logthis("using data from the modelview");
                 mViewModel.incrementCount();
-                tv_count.setText(mViewModel.getCount());
+                binding.tvCount.setText(mViewModel.getCount());
             }
         });
 
     }
-    
+
     /*`
      * simple method to add the log TextView.
      */
     public void logthis(String newinfo) {
         if (newinfo.compareTo("") != 0) {
-            logger.append(newinfo + "\n");
+            binding.logger.append(newinfo + "\n");
         }
     }
 
