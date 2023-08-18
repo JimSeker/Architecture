@@ -2,9 +2,8 @@ package edu.cosc4730.roomdemo_kt
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import edu.cosc4730.roomdemo_kt.databinding.ActivityMainBinding
 
 
 /**
@@ -16,17 +15,17 @@ import androidx.appcompat.app.AppCompatActivity
  */
 class MainActivity : AppCompatActivity() {
     lateinit var db: AppDatabase
-    lateinit var logger: TextView
+    lateinit var binding: ActivityMainBinding
     var TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        logger = findViewById(R.id.logger)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //get an instance of the database, which is a static method, that either just created it or opened.
         db = AppDatabase.getInstance(this)
-        findViewById<View>(R.id.btn_display).setOnClickListener {
+        binding.btnDisplay.setOnClickListener {
             val myThread: Thread = object : Thread() {
                 override fun run() {
                     //get all the entries with 3012 as the score.  since it's random, may not be any.
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             }
             myThread.start()
         }
-        findViewById<View>(R.id.btn_add).setOnClickListener {
+        binding.btnAdd.setOnClickListener {
             val myThread: Thread = object : Thread() {
                 override fun run() {
                     logthis("Inserting data")
@@ -95,7 +94,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, item)
             //We are likely not the main UI thread, so lets get there.
             runOnUiThread {
-                logger.append(item + "\n")
+                binding.logger.append(item + "\n")
             }
         }
     }
