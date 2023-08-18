@@ -1,7 +1,6 @@
 package edu.cosc4730.roomdemo_kt
 
 import androidx.room.*
-import edu.cosc4730.roomdemo_kt.Score
 
 /**
  * This is the Dao for the score "db"  It provides the accessor methods to the database.

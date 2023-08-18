@@ -1,6 +1,5 @@
 package edu.cosc4730.roomdemo_kt
 
-import edu.cosc4730.roomdemo_kt.Score
 import androidx.room.PrimaryKey
 import androidx.room.ColumnInfo
 import android.provider.BaseColumns
