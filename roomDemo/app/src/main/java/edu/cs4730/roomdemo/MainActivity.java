@@ -10,6 +10,8 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.cs4730.roomdemo.databinding.ActivityMainBinding;
+
 
 /**
  * This is a simple example of how the room architecture to create a simple database.
@@ -21,20 +23,20 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     AppDatabase db;
-    TextView logger;
+    ActivityMainBinding binding;
     String TAG = "MainActivity";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        logger = findViewById(R.id.logger);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //get an instance of the database, which is a static method, that either just created it or opened.
         db = AppDatabase.getInstance(this);
 
-        findViewById(R.id.btn_display).setOnClickListener(new View.OnClickListener() {
+        binding.btnDisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Thread myThread = new Thread() {
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
+        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Thread myThread = new Thread() {
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    logger.append(item + "\n");
+                    binding.logger.append(item + "\n");
                 }
             });
         }
