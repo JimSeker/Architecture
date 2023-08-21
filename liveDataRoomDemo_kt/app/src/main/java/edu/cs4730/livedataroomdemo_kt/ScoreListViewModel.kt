@@ -1,6 +1,5 @@
 package edu.cs4730.livedataroomdemo_kt
 
-import edu.cs4730.livedataroomdemo_kt.AppDatabase.Companion.getInstance
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -34,7 +33,7 @@ class ScoreListViewModel(application: Application) : AndroidViewModel(applicatio
         get() = mObservableScores
 
     init {
-        ad = getInstance(application)
+        ad = AppDatabase.getInstance(application)
         mObservableScores = MediatorLiveData()
         // set by default null, until we get data from the database.
         mObservableScores.value = null

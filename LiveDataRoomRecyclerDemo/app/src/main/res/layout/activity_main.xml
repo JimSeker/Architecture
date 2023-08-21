@@ -40,7 +40,7 @@
         app:srcCompat="@android:drawable/ic_menu_add"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listtrans"
+        android:id="@+id/myRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"

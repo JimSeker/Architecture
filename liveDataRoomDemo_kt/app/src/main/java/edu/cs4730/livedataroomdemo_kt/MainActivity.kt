@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import edu.cs4730.livedataroomdemo_kt.databinding.ActivityMainBinding
 
 /**
  * This is a simple example of how the room architecture to create a simple database.
@@ -19,14 +20,14 @@ import androidx.lifecycle.ViewModelProvider
  *
  */
 class MainActivity : AppCompatActivity() {
-    lateinit var logger: TextView
+    lateinit var binding: ActivityMainBinding
     var TAG = "MainActivity"
     lateinit var scoreListViewModel: ScoreListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        logger = findViewById(R.id.logger)
+        binding = ActivityMainBinding.inflate(layoutInflater);
+        setContentView(binding.root);
 
         //setup the viewmodel and the database (inside the view model)
         scoreListViewModel = ViewModelProvider(this)[ScoreListViewModel::class.java]
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 logthis("There is no data!!!")
             }
         }
-        findViewById<View>(R.id.btn_add).setOnClickListener {
+       binding.btnAdd.setOnClickListener {
             scoreListViewModel.addData(
                 generateScores()
             )
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, item)
             //We are likely not the main UI thread, so lets get there.
             runOnUiThread {
-                logger.append(item + "\n")
+                binding.logger.append(item + "\n")
             }
         }
     }

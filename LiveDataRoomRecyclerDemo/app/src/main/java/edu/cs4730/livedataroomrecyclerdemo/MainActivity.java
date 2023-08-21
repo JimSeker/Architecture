@@ -17,6 +17,8 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.cs4730.livedataroomrecyclerdemo.databinding.ActivityMainBinding;
+
 
 /**
  * shows how to use the room database with the AndroidViewModel
@@ -26,7 +28,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView mRecyclerView;
+    ActivityMainBinding binding;
     myAdapter mAdapter;
     String TAG = "MainActivity";
     ScoreListViewModel scoreListViewModel;
@@ -34,18 +36,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
 
         //setup the viewmodel and the database (inside the view model)
         scoreListViewModel = new ViewModelProvider(this).get(ScoreListViewModel.class);
 
         //set the floating action button up.
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Snackbar.make(view, "Adding data now", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
                 scoreListViewModel.addData(generateScores());
@@ -54,13 +55,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //set the recyclerview.
-        mRecyclerView = findViewById(R.id.listtrans);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        binding.myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.myRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mAdapter = new myAdapter(scoreListViewModel, R.layout.highscore, this);
         //add the adapter to the recyclerview
-        mRecyclerView.setAdapter(mAdapter);
+        binding.myRecyclerView.setAdapter(mAdapter);
 
         //completely unnecessary, just using it to make sure everything is really working
         scoreListViewModel.getScores().observe(this, new Observer<List<Score>>() {
