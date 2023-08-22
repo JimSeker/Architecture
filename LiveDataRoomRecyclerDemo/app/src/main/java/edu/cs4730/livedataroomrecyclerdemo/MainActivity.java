@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         binding.myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.myRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        mAdapter = new myAdapter(scoreListViewModel, R.layout.highscore, this);
+        mAdapter = new myAdapter(scoreListViewModel, this);
         //add the adapter to the recyclerview
         binding.myRecyclerView.setAdapter(mAdapter);
 

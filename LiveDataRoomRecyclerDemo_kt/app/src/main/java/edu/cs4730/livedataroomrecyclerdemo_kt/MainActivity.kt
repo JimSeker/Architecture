@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         //set the recyclerview.
         binding.myRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.myRecyclerView.itemAnimator = DefaultItemAnimator()
-        mAdapter = myAdapter(scoreListViewModel, R.layout.highscore, this)
+        mAdapter = myAdapter(scoreListViewModel, this)
         //add the adapter to the recyclerview
         binding.myRecyclerView.adapter = mAdapter
 
