@@ -27,6 +27,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import edu.cs4730.fcmretrrofit2livedatademo.databinding.ActivityMainBinding;
+
 /**
  * This project is in a nutshell, only ask for data from the network, when it has been updated on the network.
  * We use Firebase messaging to notify the app, the data has changed.  Retrofit2 to update the data in to the room database
@@ -35,27 +37,26 @@ import android.widget.Toast;
  * <p>
  * this just uses the textview to display info.  There is a button to register for the updates.  This would likely be done
  * the app first time runs?  or refresh of the token.   Not sure on the timing of this.
- *
+ * <p>
  * It should stated, this is not a full app, just a demo of how the pieces can work.
- *
+ * <p>
  * Note the ProgressDialog was deprecated in API 26.  This will need to be fixed at some point.
- *
+ * <p>
  * also the update to gradle 7.3.X breaks this code.  no changes are made, just an update to gradle.  I had to back it down via git and
  * it compiles and runs.  no clue what that is is about.
  */
 
 public class MainActivity extends AppCompatActivity {
-    private ProgressDialog progressDialog;
-
-    TextView logger;
+    ActivityMainBinding binding;
     String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        logger = findViewById(R.id.logger);
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendTokenToServer();
@@ -87,52 +88,45 @@ public class MainActivity extends AppCompatActivity {
     void logthis(String item) {
         if (item != null && item.compareTo("") != 0) {
             Log.d(TAG, item);
-            logger.append(item + "\n");
+            binding.logger.append(item + "\n");
         }
     }
 
     /**
      * This will send the token to the backend server (which is mysql/php/apache.  see
      * the php directory in this project for the source code.
-     *
+     * <p>
      * Note, this is called onResume.  On the first run, the token hasn't been generated yet, so this
      * returns false.  On later runs (or when OnResume  is called), it will auto register.
      */
     private boolean sendTokenToServer() {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Registering Device...");
-        progressDialog.show();
+
+        logthis("Registering Device...");
 
         final String token = SharedPrefManager.getInstance(this).getDeviceToken();
         final String name = "activeApp";
-        //Log.d(TAG, "token is " + token);
 
         if (token == null) {
-            progressDialog.dismiss();
-            Toast.makeText(this, "Token not generated", Toast.LENGTH_LONG).show();
+            logthis("Token not generated");
             return false;
         }
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, EndPoints.URL_REGISTER_DEVICE,
-            new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    progressDialog.dismiss();
-                    try {
-                        JSONObject obj = new JSONObject(response);
-                        logthis(obj.getString("message"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, EndPoints.URL_REGISTER_DEVICE, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    logthis(obj.getString("message"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-            },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    progressDialog.dismiss();
-                    Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }) {
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                logthis(error.getMessage());
+            }
+        }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

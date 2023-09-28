@@ -4,6 +4,7 @@ package edu.cs4730.fcmretrrofit2livedatademo;
  * These are just constants, stored here, so if the backend server changes it's quick and easy to fix
  * them all here, instead of through out the code.
  *
+ *   http://10.216.218.12/rest/data/insert.html  to demo this locally.
  */
 
 public class EndPoints {

@@ -12,7 +12,7 @@ MyFirebaseInsanceIDservice, myFirbaseMessageingService and the sendToken method 
  firebase token with the rest service, so that can notify it when there are updates.
  * sharedPrefManager class holds the firebase token.
  * MyJobService has been replaced with a worker class.  It's a dummy worker and really don't do anything, but gives you the idea of what can be done.
- * the messaging serivce that updates the room database with the new data and the liveData obersver in MainActivity will then update the data on the "front end"
+ * the messaging service that updates the room database with the new data and the liveData observer in MainActivity will then update the data on the "front end"
  * endpoints class is just the constants for where the rest service it.  Which is a local private webserver.  You will need to get the php code and create your own server.
  
 For the backend rest service, it uses retrofit2 (which yes, it's misspelled in the app name, but hard to change at this point) to access the rest service.
