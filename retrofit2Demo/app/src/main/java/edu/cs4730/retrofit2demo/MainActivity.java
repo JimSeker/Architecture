@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import edu.cs4730.retrofit2demo.databinding.ActivityMainBinding;
+
 /**
  *  basic example, taking from http://www.vogella.com/tutorials/Retrofit/article.html
  *
@@ -23,16 +25,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     DataViewModel mViewModel;
-    TextView logger;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //get the modelview.
         mViewModel = new ViewModelProvider(this).get(DataViewModel.class);
-        logger = findViewById(R.id.logger);
 
         Controller controller = new Controller();
         controller.start(mViewModel);
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mViewModel.getData().observe(this, new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> items) {
-                logger.setText("Data:\n");
+                binding.logger.setText("Data:\n");
                 for(int i =0; i < items.size(); i++) {
                     logthis(items.get(i));
                 }
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void logthis(String newinfo) {
         if (newinfo.compareTo("") != 0) {
-            logger.append(newinfo + "\n");
+            binding.logger.append(newinfo + "\n");
             Log.wtf("mainActivity", newinfo);
         }
     }

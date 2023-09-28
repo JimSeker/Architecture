@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import edu.cs4730.retrofit2livedatademo.databinding.ActivityMainBinding;
+
 /**
  * retrofit http://square.github.io/retrofit/
  * https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit  for versions in module.
@@ -23,13 +25,13 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private UserProfileViewModel viewModel;
-    TextView logger;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        logger = findViewById(R.id.textview);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         int userId = 1;
 
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(@Nullable User user) {
                 //update the ui!
                 Log.d("main", user.getUser());
-                logger.append(user.getUser());
+                binding.textview.append(user.getUser());
             }
         });
     }

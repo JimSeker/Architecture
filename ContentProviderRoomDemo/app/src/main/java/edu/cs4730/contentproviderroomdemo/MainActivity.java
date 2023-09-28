@@ -1,5 +1,6 @@
 package edu.cs4730.contentproviderroomdemo;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
@@ -16,8 +17,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
+
+import edu.cs4730.contentproviderroomdemo.databinding.ActivityMainBinding;
 
 /**
  * Simple example of how to create a content provider with a room Database.
@@ -31,9 +33,9 @@ import android.widget.Toast;
  * coming back via the content provider should work.
  */
 
-public class MainActivity extends AppCompatActivity implements
-    LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     String TAG = "MainActivity";
+    ActivityMainBinding binding;
 
     private SimpleCursorAdapter dataAdapter;
     Uri CONTENT_URI = Uri.parse("content://edu.cs4730.scoreroomprovider/score");
@@ -47,69 +49,55 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //initialize the loader
         LoaderManager.getInstance(this).initLoader(TUTORIAL_LIST_LOADER, null, this);
 
         // The desired columns to be bound
-        String[] columns = new String[]{
-            Score.COLUMN_NAME,
-            Score.COLUMN_SCORE
-        };
+        String[] columns = new String[]{Score.COLUMN_NAME, Score.COLUMN_SCORE};
 
         // the XML defined views which the data will be bound to
-        int[] to = new int[]{
-            R.id.name,
-            R.id.score
-        };
+        int[] to = new int[]{R.id.name, R.id.score};
 
         // create the adapter using the cursor pointing to the desired data
         //as well as the layout information
-        dataAdapter = new SimpleCursorAdapter(
-            this, R.layout.highscore,
-            null,   //cursor is filled in by the loaders.
-            columns,
-            to,
-            0);
+        dataAdapter = new SimpleCursorAdapter(this, R.layout.highscore,
+                null,   //cursor is filled in by the loaders.
+                columns, to, 0);
 
-        ListView listView = (ListView) findViewById(R.id.listView1);
         // Assign adapter to ListView
-        listView.setAdapter(dataAdapter);
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.listView1.setAdapter(dataAdapter);
+        binding.listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> listView, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 // Get the cursor, positioned to the corresponding row in the result set
                 Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 
-
+                @SuppressLint("Range") //literally, fixing in the statement.  lint is dumb.
                 String name = cursor.getString(cursor.getColumnIndex(Score.COLUMN_NAME));
                 Toast.makeText(getBaseContext(), name, Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        findViewById(R.id.fab2).setOnClickListener(new View.OnClickListener() {
+        binding.fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addData();
             }
         });
-
     }
 
 
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-
         //setup the information we want for the contentprovider.
-
-        CursorLoader cursorLoader = new CursorLoader(this,
-            CONTENT_URI, projection, null, null, SortOrder);
+        CursorLoader cursorLoader =
+                new CursorLoader(this, CONTENT_URI, projection, null, null, SortOrder);
         return cursorLoader;
     }
 

@@ -29,9 +29,7 @@ public abstract class AppDatabase extends RoomDatabase {
      */
     public static synchronized AppDatabase getInstance(Context context) {
         if (sInstance == null) {
-            sInstance = Room
-                .databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name")
-                .build();
+            sInstance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name").build();
             sInstance.populateInitialData();
         }
         return sInstance;
@@ -44,16 +42,10 @@ public abstract class AppDatabase extends RoomDatabase {
         Random r = new Random();
         if (ScoreDao().count() == 0) {
             Score scoreData = new Score();
-            beginTransaction();
-            try {
-                for (int i = 0; i < Score.names.length; i++) {
-                    scoreData.name = Score.names[i];
-                    scoreData.score = r.nextInt(5000);
-                    ScoreDao().insert(scoreData);
-                }
-                setTransactionSuccessful();
-            } finally {
-                endTransaction();
+            for (int i = 0; i < Score.names.length; i++) {
+                scoreData.name = Score.names[i];
+                scoreData.score = r.nextInt(5000);
+                ScoreDao().insert(scoreData);
             }
         }
     }
