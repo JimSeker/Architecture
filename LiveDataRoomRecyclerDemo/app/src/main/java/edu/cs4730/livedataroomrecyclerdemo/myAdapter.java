@@ -6,12 +6,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
     private List<Score> myList;
     private final String TAG = "myAdapter";
     private ScoreListViewModel mViewModel;
+    private Context mContext;
 
     //the viewbinding now provides the references.
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -53,6 +56,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
                 notifyDataSetChanged();
             }
         });
+        mContext = activity.getApplicationContext();
     }
 
     // Create new views (invoked by the layout manager)
@@ -70,6 +74,14 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
         viewHolder.viewBinding.name.setText(entry.getName());
         viewHolder.viewBinding.name.setTag(i);  //sample data to show.
         viewHolder.viewBinding.score.setText(String.valueOf(entry.getScore()));
+        //itemView is the whole cardview, so it easy to a click listener.
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               //view in this case is the itemView, which had other pieces in it.
+                Toast.makeText(mContext, viewHolder.viewBinding.name.getTag().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

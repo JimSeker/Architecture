@@ -1,12 +1,12 @@
 package edu.cs4730.livedataroomrecyclerdemo_kt
 
+import android.content.Context
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import android.widget.TextView
-import android.view.ViewGroup
-import android.view.LayoutInflater
-import android.view.View
 import edu.cs4730.livedataroomrecyclerdemo_kt.databinding.HighscoreBinding
 
 /**
@@ -23,7 +23,7 @@ class myAdapter(
     activity: AppCompatActivity
 ) : RecyclerView.Adapter<myAdapter.ViewHolder>() {
     private var myList: List<Score>? = null
-
+    private var mContext: Context? = null
     //private  AppCompatActivity activity;  only need it once.
     private val TAG = "myAdapter"
 
@@ -43,6 +43,11 @@ class myAdapter(
         viewHolder.viewBinding.name.text = entry.getName()
         viewHolder.viewBinding.name.tag = i //sample data to show.
         viewHolder.viewBinding.score.text = entry.getScore().toString()
+        //itemView is the whole cardview, so it easy to a click listener.
+        viewHolder.itemView.setOnClickListener { //view in this case is the itemView, which had other pieces in it.
+            Toast.makeText(mContext!!, viewHolder.viewBinding.name.tag.toString(), Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -57,5 +62,6 @@ class myAdapter(
             myList = scores
             notifyDataSetChanged()
         }
+        mContext = activity.applicationContext
     }
 }
