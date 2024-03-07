@@ -40,10 +40,8 @@ import edu.cs4730.fcmretrrofit2livedatademo.databinding.ActivityMainBinding;
  * <p>
  * It should stated, this is not a full app, just a demo of how the pieces can work.
  * <p>
- * Note the ProgressDialog was deprecated in API 26.  This will need to be fixed at some point.
- * <p>
- * also the update to gradle 7.3.X breaks this code.  no changes are made, just an update to gradle.  I had to back it down via git and
- * it compiles and runs.  no clue what that is is about.
+ * this app is fully working again, with gradle 8.x and all the library updates.  But this example is kind of a mess.
+ * it only uses messaging in the console, at some point a realtime db was active, but it's disabled and not needed.
  */
 
 public class MainActivity extends AppCompatActivity {
