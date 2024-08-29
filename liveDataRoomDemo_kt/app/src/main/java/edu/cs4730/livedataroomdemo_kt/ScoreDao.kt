@@ -48,7 +48,7 @@ interface ScoreDao {
      * @return The row ID of the newly inserted data.
      */
     @Insert
-    fun insert(scoreData: Score?): Long
+    fun insert(scoreData: Score): Long
 
     /**
      * Inserts multiple scores into the database
