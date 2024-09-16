@@ -29,9 +29,11 @@ dependencies {
     //room
     implementation "androidx.room:room-runtime:2.6.1"
     annotationProcessor "androidx.room:room-compiler:2.6.1"
+
+
     //for LiveData and ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.4"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.5"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.8.5"
     //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
     //but with android view model, doesn't seem to have the same problem.  really weird.  leaving the commented out line just in case.
 //    constraints {
