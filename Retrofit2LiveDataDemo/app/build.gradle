@@ -30,13 +30,13 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation("com.google.android.material:material:1.12.0")
     //for LiveData and ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.4"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.8.7"
     //to use livedata with reactiveStreams
-    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.8.4'
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.8.7'
     //retrofit for rest api calls.
     //https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit  for versions in module.
     implementation 'com.squareup.retrofit2:retrofit:2.11.0'

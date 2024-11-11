@@ -2,7 +2,10 @@ package edu.cs4730.livedataroomrecyclerdemo_kt
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +27,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            WindowInsetsCompat.CONSUMED
+        }
         setSupportActionBar(binding.toolbar)
 
         //setup the viewmodel and the database (inside the view model)
@@ -31,8 +39,8 @@ class MainActivity : AppCompatActivity() {
 
         //set the floating action button up.
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Adding data now", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            Snackbar.make(view, "Adding data now", Snackbar.LENGTH_LONG).setAction("Action", null)
+                .show()
             scoreListViewModel.addData(generateScores())
         }
 
