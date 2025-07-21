@@ -20,7 +20,7 @@ import edu.cs4730.livedatademo_kt.databinding.ActivityMainBinding
  * The "logger" text is the only one that is not saved, so it resets when the phone rotates.
  */
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     lateinit var mViewModel: DataViewModel
 
     //this is a terrible way to do this, since the text change triggers the observer to update
@@ -60,10 +60,10 @@ class MainActivity : AppCompatActivity() {
         mViewModel.dataCount.observe(this) { integer -> binding.tvCount.text = integer.toString() }
 
         //change the count.
-        binding.btnAddCount.setOnClickListener(View.OnClickListener {
+        binding.btnAddCount.setOnClickListener {
             logthis("using data from the modelview")
             mViewModel.incrementCount()
-        })
+        }
     }
 
     /**

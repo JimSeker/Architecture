@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 35
+    compileSdk 36
     defaultConfig {
         applicationId "edu.cs4730.livedatademo"
-        minSdkVersion 29
-        targetSdk 35
+        minSdkVersion 31
+        targetSdk 36
         versionCode 1
         versionName "1.0"
     }
@@ -23,12 +23,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.9.2"
     // LiveData, no using in this example.
-    implementation "androidx.lifecycle:lifecycle-livedata:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.9.2"
     //to use livedata with reactiveStreams
     //implementation "androidx.lifecycle:lifecycle-reactivestreams:2.5.1"
     implementation("com.google.android.material:material:1.12.0")
