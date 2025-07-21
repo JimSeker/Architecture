@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 35
+    compileSdk =36
     defaultConfig {
         applicationId "edu.cs4730.retrofit2demo"
-        minSdkVersion 29
-        targetSdk 35
+        minSdkVersion 31
+        targetSdk =36
         versionCode 1
         versionName "1.0"
 
@@ -23,22 +23,22 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    namespace 'edu.cs4730.retrofit2demo'
+    namespace ='edu.cs4730.retrofit2demo'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation("com.google.android.material:material:1.12.0")
     //https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit  for versions in module.
-    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.11.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.11.0'
+    implementation 'com.squareup.retrofit2:retrofit:3.0.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:3.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:3.0.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:3.0.0'
     //for LiveData and ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.9.2"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.9.2"
     //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
     //but with android view model, doesn't seem to have the same problem.  really weird.  leaving the commented out line just in case.
 //    constraints {

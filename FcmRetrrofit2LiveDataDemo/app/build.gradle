@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdk 35
+    compileSdk 36
     defaultConfig {
         applicationId "edu.cs4730.fcmretrrofit2livedatademo"
-        minSdkVersion 29
-        targetSdk 35
+        minSdkVersion 31
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
@@ -29,29 +29,29 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation("com.google.android.material:material:1.12.0")
     //firebase messages stuff.
     implementation 'com.google.firebase:firebase-core:21.1.1'
-    implementation 'com.google.firebase:firebase-messaging:24.0.3'
+    implementation 'com.google.firebase:firebase-messaging:25.0.0'
     //replaces the jobservice with a worker instead,  jobservice is depreciated.
-    implementation "androidx.work:work-runtime:2.10.0"
+    implementation "androidx.work:work-runtime:2.10.2"
     //https://mvnrepository.com/artifact/com.android.volley/volley
     implementation 'com.android.volley:volley:1.2.1'
     //room etc stuff.
-    implementation "androidx.room:room-runtime:2.6.1"
-    annotationProcessor "androidx.room:room-compiler:2.6.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.8.7"
+    implementation "androidx.room:room-runtime:2.7.2"
+    annotationProcessor "androidx.room:room-compiler:2.7.2"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.9.2"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.9.2"
     //implementation "androidx.lifecycle:lifecycle-runtime:2.4.1"
     //annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.1.0"
     // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.8.7"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.9.2"
 
     //retrofit for rest api calls.
-    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.11.0'
+    implementation 'com.squareup.retrofit2:retrofit:3.0.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:3.0.0'
     //really dumb, needed to stop a duplicate dependency, even though not use kotlin at all, hopefully at some point won't need it.
     //but with android view model, doesn't seem to have the same problem.  really weird.  leaving the commented out line just in case.
 //    constraints {
