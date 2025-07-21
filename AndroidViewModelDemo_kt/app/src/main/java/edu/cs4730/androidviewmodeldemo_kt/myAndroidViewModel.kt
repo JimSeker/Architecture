@@ -14,7 +14,7 @@ import androidx.lifecycle.LiveData
  */
 class myAndroidViewModel(application: Application) : AndroidViewModel(application) {
     var count = 0
-    var name: MutableLiveData<String>
+    var name: MutableLiveData<String> = MutableLiveData()
     fun getCount(): String {
         return count.toString()
     }
@@ -37,7 +37,6 @@ class myAndroidViewModel(application: Application) : AndroidViewModel(applicatio
         get() = name
 
     init {
-        name = MutableLiveData()
-        //name.setValue("None");
+        name.value = "None";
     }
 }

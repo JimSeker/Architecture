@@ -17,14 +17,12 @@ import androidx.lifecycle.MutableLiveData;
  */
 
 public class myAndroidViewModel extends AndroidViewModel {
-    int count;
-    MutableLiveData<String> name;
+    int count =0 ;
+    MutableLiveData<String> name= new MutableLiveData<String>();
 
     public myAndroidViewModel(@NonNull Application application) {
         super(application);
-        count = 0;
-        name = new MutableLiveData<String>();
-        //name.setValue("None");
+        name.setValue("None");
     }
 
     String getCount() {

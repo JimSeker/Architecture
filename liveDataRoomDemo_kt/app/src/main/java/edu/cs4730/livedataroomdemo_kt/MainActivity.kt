@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
             logthis("Data has been added/changed, displaying")
             if (scores != null) {
                 for (score in scores) {
-                    val data = "id=" + score.id.toString() + " name=" + score.getName()
-                        .toString() + " score=" + score.getScore()
+                    val data = "id=" + score.id.toString() + " name=" + score.getName() +
+                         " score=" + score.getScore()
                     logthis(data)
                 }
             } else {
