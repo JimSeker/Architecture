@@ -1,6 +1,10 @@
 package edu.cosc4730.roomdemo_kt
 
-import androidx.room.*
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
+import androidx.room.Dao
 
 /**
  * This is the Dao for the score "db"  It provides the accessor methods to the database.

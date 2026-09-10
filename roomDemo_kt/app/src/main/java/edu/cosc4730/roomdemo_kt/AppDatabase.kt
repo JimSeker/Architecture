@@ -9,10 +9,9 @@ import androidx.room.RoomDatabase
  * This is very simple code.  This is the "database" class and provides a bridge via SocreDoa method
  * to the data itself. This is the simplest version of the RoomDatabase class.
  *
- * note you may need to use  the java code of the code for this one., since the Kotlin code won't always work at runtime.
- * But for kotlin, I was able to get KAPT to work, see changes in gradle build files.
- * You will need to add the KAPT in the gradle build files.  I can't get kSP to work, but maybe
- * if it's a new project it might work?
+ * Room implementation code is generated at build time by KSP.
+ * The Gradle Kotlin DSL files must keep the Room compiler on the `ksp` configuration
+ * or AppDatabase_Impl will not be generated.
  */
 @Database(entities = [Score::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
