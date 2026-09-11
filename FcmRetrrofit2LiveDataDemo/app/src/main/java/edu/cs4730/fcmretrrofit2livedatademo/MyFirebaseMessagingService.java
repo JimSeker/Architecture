@@ -33,12 +33,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      * <p>
      * This is called on at least the first startup.  it generates a unique token that is
      * used by the cloud messaging system.  definitely save the token for later use.
-     *
-     * @param token
      */
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
+
+        Log.wtf(TAG, "FCM Token: " + token);
+        //store the token for later use in the app.
+        SharedPrefManager.getInstance(getApplicationContext()).saveDeviceToken(token);
+    }
+
+    //This is the new version, but it bitches if I don't have onNewToken as well.  odd?
+    @Override
+    public void onRegistered(@NonNull String token) {
+        super.onRegistered(token);
 
         Log.wtf(TAG, "FCM Token: " + token);
         //store the token for later use in the app.
