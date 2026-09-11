@@ -5,6 +5,10 @@ This example needs to more info to explain everything that is going on.
 The basics is this:  The app will get push updates when the rest service updates the data.
 So it saves time and network data, since doesn't poll.  The data is stored locally in a room database and updated from the rest service only when needed.
 
+This project php code is likley non-functional at this point in the new google services and authicators.  I kind of forgot this project existed.  I need to update the php newer node.js version.    9/10/2026
+Also, the firebase messeger service is generating a warning that onNewToken is deprecicated and use onRegistered.  But then I get another error that onNewToken is missing.  both is included until I figure out what is going on here. 9/10/2026  likely the googleapi/firebase/messager example will be more current.  Also has the node.js code too.
+
+
 So Score, ScoreDoa, AppDatabase, and ScoreListViewModel  are for the "front end".
 They are the room database and liveData update pieces.
 
