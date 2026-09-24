@@ -1,13 +1,12 @@
 [versions]
-agp = "9.4.0"
-kotlin = "2.4.10"
+agp = "9.4.1"
 appcompat = "1.8.0"
 constraintlayout = "2.2.2"
 material = "1.14.0"
-corektx = "1.19.0"
+corektx = "1.19.1"
 room = "2.8.5"
 lifecycle = "2.11.0"
-#don't upgrade ksp.  it's not compatible currently wiht builtin kotlin.
+#don't upgrade ksp.  it's not compatible currently with builtin kotlin.
 ksp = "2.2.10-2.0.2"
 
 [libraries]
