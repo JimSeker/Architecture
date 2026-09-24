@@ -1,9 +1,9 @@
 [versions]
-agp = "9.4.0"
+agp = "9.4.1"
 appcompat = "1.8.0"
 constraintlayout = "2.2.2"
 material = "1.14.0"
-corektx = "1.19.0"
+corektx = "1.19.1"
 recyclerview = "1.4.0"
 cardview = "1.0.0"
 room = "2.8.5"
